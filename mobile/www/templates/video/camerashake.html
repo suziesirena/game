@@ -1,0 +1,68 @@
+
+<ion-view title="Camera Shake">
+    <ion-content scroll="true">
+
+</head>
+<body>
+	<img id="robot" src="robot.jpg" width="400" height="400"/>
+	<canvas id="canvas" width="400" height="400"></canvas>
+		<!-- <label><input id="amplitudeX" type="range" min="0" max="50" step="1" value="8"/> Amplitude X</label>
+		<input id="amplitudeX" type="range" min="0" max="50" step="1" value="8"/>Amplitude Y</label>
+		<label><input id="rotation" type="range" min="0" max="20" step="1" value="2"/> Rotation</label>
+		<label><input id="frequency" type="range" min="0" max="10" step="0.01" value="4"/> Frequency</label>
+		<label><input id="octaves" type="range" min="1" max="4" step="1" value="1"/> Octaves</label>
+		<label><input id="autoScale" type="checkbox" checked/> Auto Scale</label>
+		<label><input id="preScale" type="range" min="0" max="1" step="0.0001" value="1"/> Pre-Scale Amount</label> -->
+		<div class="list" style="margin-top: 13px">
+		          <div class="item item-divider">
+		            Ranges In A List
+		          </div>
+		          <div class="item range range-positive">
+		            <i class="icon ion-ios-sunny-outline"></i>
+		            <input id="amplitudeX" type="range" min="0" max="50" step="1" value="8"/>
+		            <i class="icon ion-ios-sunny"></i>
+		          </div>
+		          <div class="item range range-calm">
+		            <i class="icon ion-ios-lightbulb-outline"></i>
+		            <input id="amplitudeX" type="range" min="0" max="50" step="1" value="8"/>
+		            <i class="icon ion-ios-lightbulb"></i>
+		          </div>
+		          <div class="item range range-balanced">
+		            <i class="icon ion-ios-bolt-outline"></i>
+		            <input id="rotation" type="range" min="0" max="20" step="1" value="2"/>
+		            <i class="icon ion-ios-bolt"></i>
+		          </div>
+		          <div class="item range range-energized">
+		            <i class="icon ion-ios-moon-outline"></i>
+		            <input id="frequency" type="range" min="0" max="10" step="0.01" value="4"/>
+		            <i class="icon ion-ios-moon"></i>
+		          </div>
+		          <div class="item range range-assertive">
+		            <i class="icon ion-ios-partlysunny-outline"></i>
+		            <input id="octaves" type="range" min="1" max="4" step="1" value="1"/>
+		            <i class="icon ion-ios-partlysunny"></i>
+		          </div>
+		          <div class="item range range-royal">
+		            <i class="icon ion-ios-rainy-outline"></i>
+		            <input id="preScale" type="range" min="0" max="1" step="0.0001" value="1"/>
+		            <i class="icon ion-ios-rainy"></i>
+		          </div>
+							<div class="item range range-royal">
+							<label><input id="autoScale" type="checkbox" checked/> Auto Scale</label>
+		          </div>
+		</div>
+</ion-content>
+</ion-view>
+
+
+	<style type="text/css">
+		canvas {
+			display: block;
+			margin: auto;
+		}
+
+		#robot {
+			display: none;
+		}
+
+	</style>

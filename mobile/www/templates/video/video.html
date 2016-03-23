@@ -1,0 +1,20 @@
+
+<ion-view title="Spy cam" ng-controller="videoCtrl">
+    <ion-content scroll="false">
+        <video id="video" style="width: 100%"
+                  preload="auto"
+                  autoplay="autoplay"
+                  loop="true"
+                  webkit-playsinline="webkit-playsinline"
+                  class="videoPlayer">
+          <source src="footage.mp4" type="video/mp4"/>
+        </video>
+        <img id="snow" src="snow.gif" style="width: 100%;top: 0px;position: absolute;height: 200px;display:none;" />
+        <div>Time : {{time}}</div>
+         <button class="button button-positive" onclick="document.getElementById('video').play();">play</button>
+         <button class="button button-positive" onclick="document.getElementById('video').pause();">Pause</button>
+
+          <button class="button button-positive" ng-click="toto()">seek</button>
+
+    </ion-content>
+</ion-view>

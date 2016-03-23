@@ -1,0 +1,16 @@
+
+<ion-view title="Spy cam" ng-controller="notificationCtrl">
+    <ion-content scroll="false">
+        Things to try:<br><br>
+         Create a notification, swipe the app away, click notification.<br>
+         Dismiss the notification (starts the app in background), launch the app<br>
+         Set an alarm, swipe the app away, click the notification<br><br>
+
+        <button class="button button-positive" ng-click="createNotification('created from button')">Show test notification</button>
+        <br>
+        <br>
+        <button class="button button-positive" ng-click="createAlarm(5)">Show notification after 5 seconds</button><br><br>
+        <div>Logs:</div>
+        <div style="white-space:pre; font-size:9pt; background: #BCDDE8;" id="logs"></div>
+</ion-content>
+</ion-view>
