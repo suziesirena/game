@@ -39,8 +39,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
           },
           views: {
               'menuContent': {
-                  templateUrl: "templates/contacts/employee-list.html",
-                  controller: 'EmployeeListCtrl'
+                  templateUrl: "templates/contacts/contact-list.html",
+                  controller: 'contactListCtrl'
               }
           }
       })

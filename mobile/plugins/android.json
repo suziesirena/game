@@ -7,16 +7,37 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "cordova-plugin-chrome-apps-audiocapture": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "cordova-plugin-chrome-apps-common": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "cordova-plugin-chrome-apps-runtime": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "cordova-plugin-chrome-apps-storage": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
         "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "cordova-plugin-media": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
         "cordova-plugin-splashscreen": {
@@ -34,6 +55,9 @@
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.game840775"
         },
@@ -47,32 +71,7 @@
         "plugin.google.maps": {
             "API_KEY_FOR_ANDROID": "AIzaSyBUmfAd_vBCZ0jb-56LBN29l6fF0c2kvko",
             "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-chrome-apps-audiocapture": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "de.appplant.cordova.plugin.local-notification": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-chrome-apps-common": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-chrome-apps-storage": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-chrome-apps-runtime": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        },
-        "cordova-plugin-app-event": {
-            "PACKAGE_NAME": "com.ionicframework.game840775"
-        }
-    }
+    "dependent_plugins": {}
 }
