@@ -14,7 +14,7 @@ var nodeServerURL = 'http://localhost:8200';
 
 try {
   var request = new XMLHttpRequest();
-  request.open('GET', 'https://raw.githubusercontent.com/gilles-danjou/game/master/servers.js', false);  // `false` makes the request synchronous
+  request.open('GET', 'https://raw.githubusercontent.com/suziesirena/game/master/servers.js', false);  // `false` makes the request synchronous
   request.send(null);
 
   if (request.status === 200) {

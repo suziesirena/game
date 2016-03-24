@@ -86,7 +86,7 @@
     <author email="you@example.com" href="http://example.com.com/">
       Your Name Here
     </author>
-    <content original-src="index.html" src="http://192.168.1.12:8100" />
+    <content original-src="index.html" src="http://192.168.1.172:8100" />
     <access origin="*" />
     <access origin="https://googleapis.com/" subdomains="true" />
     <access origin="https://gstatic.com/" subdomains="true" />

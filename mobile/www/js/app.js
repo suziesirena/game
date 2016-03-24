@@ -14,7 +14,7 @@ var nodeServerURL = 'http://localhost:8200';
 
 try {
   var request = new XMLHttpRequest();
-  request.open('GET', 'https://raw.githubusercontent.com/gilles-danjou/game/master/servers.js', false);  // `false` makes the request synchronous
+  request.open('GET', 'https://raw.githubusercontent.com/suziesirena/game/master/servers.js', false);  // `false` makes the request synchronous
   request.send(null);
 
   if (request.status === 200) {
@@ -56,7 +56,7 @@ window.globalVariable = {
 
 
 var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services',
-               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services'])
+               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services', 'ionic.contrib.drawer.vertical'])
 
 
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService) {

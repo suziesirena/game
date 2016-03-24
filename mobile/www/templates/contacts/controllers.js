@@ -1,4 +1,4 @@
-appControllers.controller('EmployeeListCtrl', function ($scope, Employees) {
+appControllers.controller('contactListCtrl', function ($scope, Employees) {
 
         $scope.searchKey = "";
 

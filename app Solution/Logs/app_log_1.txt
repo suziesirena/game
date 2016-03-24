@@ -2454,3 +2454,43 @@
 2016-03-23 21:19:17 [wakanda.app] INFO - "app" solution started
 2016-03-23 21:19:17 [wakanda] INFO - "app" solution has been successfully opened for running (duration: 3828 ms)
 2016-03-23 21:19:17 [wakanda.supervisor] INFO - solution opened
+2016-03-24 11:36:57 [wakanda.app] INFO - Users and groups directory opened
+2016-03-24 11:36:58 [IndexManager] INFO - Index  on Question.ID built in 0 ms
+2016-03-24 11:36:58 [wakanda.app.app] INFO - Datastore opened
+2016-03-24 11:36:58 [wakanda.app.app] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8082,"securedPort":443,"mode":"http"}
+2016-03-24 11:36:58 [wakanda.app.app] INFO - "app" project opened
+2016-03-24 11:36:58 [wakanda.app.ServerAdmin] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8080,"securedPort":4433,"mode":"http"}
+2016-03-24 11:36:58 [wakanda.app.ServerAdmin] INFO - "ServerAdmin" project opened
+2016-03-24 11:36:58 [wakanda.app] INFO - "app" solution opened
+2016-03-24 11:36:58 [wakanda] INFO - Starts "app" solution
+2016-03-24 11:37:00 [wakanda.app.ServerAdmin] WARN - Failed to set the required key and certificate for secure connections
+2016-03-24 11:37:00 [wakanda.app.ServerAdmin.iasv] ERROR - [1034] Cannot start the HTTP Server, task #1295
+2016-03-24 11:37:00 [wakanda.app.ServerAdmin] WARN - "ServerAdmin" project started with errors
+2016-03-24 11:37:00 [wakanda.app.iasv] ERROR - [1014] Cannot start 'ServerAdmin' project, task #1295
+2016-03-24 11:37:00 [wakanda.app.ServerAdmin] INFO - "ServerAdmin" project stopped
+2016-03-24 11:37:00 [wakanda.app] WARN - "app" solution started with errors
+2016-03-24 11:37:00 [wakanda.app] INFO - "app" solution stopped
+2016-03-24 11:37:00 [wakanda.app.app] INFO - "app" project closed
+2016-03-24 11:37:00 [wakanda.app.ServerAdmin] INFO - "ServerAdmin" project closed
+2016-03-24 11:37:01 [wakanda.app] INFO - "app" solution closed
+2016-03-24 11:37:24 [wakanda.app] INFO - Users and groups directory opened
+2016-03-24 11:37:25 [IndexManager] INFO - Index  on Question.ID has been deleted 
+2016-03-24 11:37:25 [wakanda.app.app] INFO - Datastore opened
+2016-03-24 11:37:25 [wakanda.app.app] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8082,"securedPort":443,"mode":"http"}
+2016-03-24 11:37:25 [wakanda.app.app] INFO - "app" project opened
+2016-03-24 11:37:25 [wakanda.app.ServerAdmin] INFO - Publication settings loaded: {"hostName":"localhost","listen":"any","port":8080,"securedPort":4433,"mode":"http"}
+2016-03-24 11:37:25 [wakanda.app.ServerAdmin] INFO - "ServerAdmin" project opened
+2016-03-24 11:37:25 [wakanda.app] INFO - "app" solution opened
+2016-03-24 11:37:25 [wakanda] INFO - Starts "app" solution
+2016-03-24 11:37:26 [wakanda.app.ServerAdmin] WARN - Failed to set the required key and certificate for secure connections
+2016-03-24 11:37:26 [wakanda.app.ServerAdmin] INFO - HTTP Server started
+2016-03-24 11:37:26 [wakanda.app.ServerAdmin] INFO - "ServerAdmin" project started
+2016-03-24 11:37:27 [wakanda.app.app] INFO - HTTP Server started
+2016-03-24 11:37:27 [wakanda.app.app] INFO - "app" project started
+2016-03-24 11:37:27 [wakanda.app.ServerAdmin] INFO - Executes the bootstrap file(s)
+2016-03-24 11:37:27 [wakanda.app.ServerAdmin] INFO - Bootstrap file(s) executed
+2016-03-24 11:37:27 [wakanda.app.app] INFO - Executes the bootstrap file(s)
+2016-03-24 11:37:27 [wakanda.app.app] INFO - Bootstrap file(s) executed
+2016-03-24 11:37:27 [wakanda.app] INFO - "app" solution started
+2016-03-24 11:37:27 [wakanda] INFO - "app" solution has been successfully opened for running (duration: 4006 ms)
+2016-03-24 11:37:27 [wakanda.supervisor] INFO - solution opened

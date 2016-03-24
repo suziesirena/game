@@ -39,22 +39,22 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
           },
           views: {
               'menuContent': {
-                  templateUrl: "templates/contacts/employee-list.html",
-                  controller: 'EmployeeListCtrl'
+                  templateUrl: "templates/contacts/contact-list.html",
+                  controller: 'contactListCtrl'
               }
           }
       })
-      .state('employee', {
-          url: '/employees/:employeeId',
-          templateUrl: 'templates/contacts/employee-detail.html',
-          controller: 'EmployeeDetailCtrl'
-      })
-
-      .state('reports', {
-          url: '/employees/:employeeId/reports',
-          templateUrl: 'templates/contacts/employee-reports.html',
-          controller: 'EmployeeReportsCtrl'
-      })
+      // .state('employee', {
+      //     url: '/employees/:employeeId',
+      //     templateUrl: 'templates/contacts/employee-detail.html',
+      //     controller: 'EmployeeDetailCtrl'
+      // })
+      //
+      // .state('reports', {
+      //     url: '/employees/:employeeId/reports',
+      //     templateUrl: 'templates/contacts/employee-reports.html',
+      //     controller: 'EmployeeReportsCtrl'
+      // })
       .state('app.chat', {
           url: '/chat',
           params:{
@@ -67,27 +67,27 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
               }
           }
       })
-      .state('app.contractUs', {
-          url: "/contractUs",
-          views: {
-              'menuContent': {
-                  templateUrl: "templates/contacts/email-message/html/contract-us.html",
-                  controller: 'contractUsCtrl'
-              }
-
-          }
-      })
-      .state('app.defaultUI', {
-          url: "/defaultUI",
-          cache: false,
-          views: {
-              'menuContent': {
-                  templateUrl: "templates/material-user-interface/default-user-interface/html/default-user-interface.html",
-                  controller: 'defaultUserInterfaceCtrl'
-              }
-
-          }
-      })
+      // .state('app.contractUs', {
+      //     url: "/contractUs",
+      //     views: {
+      //         'menuContent': {
+      //             templateUrl: "templates/contacts/email-message/html/contract-us.html",
+      //             controller: 'contractUsCtrl'
+      //         }
+      //
+      //     }
+      // })
+      // .state('app.defaultUI', {
+      //     url: "/defaultUI",
+      //     cache: false,
+      //     views: {
+      //         'menuContent': {
+      //             templateUrl: "templates/material-user-interface/default-user-interface/html/default-user-interface.html",
+      //             controller: 'defaultUserInterfaceCtrl'
+      //         }
+      //
+      //     }
+      // })
       .state('app.dashboard', {
           url: "/dashboard",
           views: {
