@@ -2005,3 +2005,12 @@ md-sidenav {
       background-image: -o-linear-gradient(top, #fc9f8a, #fa623f);
       background-image: linear-gradient(to bottom, #fc9f8a, #fa623f);
     }
+
+    .bar {
+      background-color: inherit;
+    }
+
+    .pane, .view {
+          color : #fff;
+         background-color: inherit;
+    }

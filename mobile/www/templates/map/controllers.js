@@ -82,6 +82,34 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
         'icon': { 'url': 'http://www.kmcgraphics.com/google/caricon.png' }
       }, function(marker) {
 
+        // var numDeltas = 100;
+        // var delay = 10; //milliseconds
+        // var i = 0;
+        // var deltaLat;
+        // var deltaLng;
+        // function transition(result){
+        //     i = 0;
+        //     deltaLat = (result[0] - position[0])/numDeltas;
+        //     deltaLng = (result[1] - position[1])/numDeltas;
+        //     moveMarker();
+        // }
+        //
+        // function moveMarker(){
+        //     position[0] += deltaLat;
+        //     position[1] += deltaLng;
+        //     var latlng = new google.maps.LatLng(position[0], position[1]);
+        //     marker.setPosition(latlng);
+        //     if(i!=numDeltas){
+        //         i++;
+        //         setTimeout(moveMarker, delay);
+        //     }
+        // }
+        //
+        //
+        // var result = [me.latLng.lat(), me.latLng.lng()];
+        // transition(result);
+
+
         for (i = 0; i < pathCoords.length; i++) {
   				setTimeout(function(coords) {
             map.setCenter( new plugin.google.maps.LatLng(coords.lat(), coords.lng()));

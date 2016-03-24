@@ -28,11 +28,19 @@
 
 
 
-        <ion-nav-view name="menuContent"></ion-nav-view>
-        <div class="bar bar-footer">
+        <ion-nav-view name="menuContent" style="background-image: url('images/background.jpg');"></ion-nav-view>
+        <div class="bar bar-footer" style="height: 94px;">
 
+<nav style="width: 100%;">
+          <div class="row">
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts<span class="badge red" style="left:70px;top:10px;right:inherit">8</span></div>
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
+            <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages</div>
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
+          </div>
+</nav>
             <!-- <section class="container"> -->
-              <nav style="width: 100%;">
+              <!-- <nav style="width: 100%;">
                 <ul>
                   <li class="active"><a href="index.html">Dashboard</a></li>
                   <li><a href="index.html">Tasks<span class="badge">4</span></a></li>
@@ -41,7 +49,7 @@
                   <li><a href="index.html">Notifications<span class="badge red">16</span></a></li>
                   <li><a href="index.html">Logout</a></li>
                 </ul>
-              </nav>
+              </nav> -->
             <!-- </section> -->
 
 

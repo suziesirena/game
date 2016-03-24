@@ -1,27 +1,32 @@
 
 
-<ion-view title="Home" ng-controller="homeCtrl">
+<ion-view title="Home" ng-controller="homeCtrl" style="color:#fff">
   <ion-content>
+    <div class="row" style="height:50px;"></div>
+    <div class="row">
+      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts</div>
+      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
+      <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages</div>
+    </div>
+    <div class="row" style="height:50px;"></div>
+    <div class="row">
+      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Memo.png"/><br/>Memo</div>
+      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Phone.png"/><br/>Phone</div>
+      <div class="col" ui-sref="app.video" style="text-align:center;"><img width="50" src="images/apps/Camera.png"/><br/>Camera</div>
+    </div>
+    <div class="row" style="height:50px;"></div>
+    <div class="row">
+      <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Maps-icon.png"/><br/>Maps</div>
+      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" src="images/apps/Settings.png"/><br/>Settings</div>
+      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" /><br/>&nbsp;</div>
 
-    <div class="row">
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="100" src="images/apps/Contacts.png"/><br/>Contacts</div>
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="100" src="images/apps/E-mail.png"/><br/>Mails</div>
-      <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="100" src="images/apps/Messages.png"/><br/>Messages</div>
     </div>
-    <div class="row">
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="100" src="images/apps/Memo.png"/><br/>Memo</div>
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="100" src="images/apps/Phone.png"/><br/>Phone</div>
-      <div class="col" ui-sref="app.video" style="text-align:center;"><img width="100" src="images/apps/Camera.png"/><br/>Camera</div>
-    </div>
-    <div class="row">
-      <div class="col" ui-sref="app.map" style="text-align:center;"><img width="100" src="images/apps/Maps-icon.png"/><br/>Maps</div>
-      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="100" src="images/apps/Settings.png"/><br/>Settings</div>
-    </div>
+    <div class="row" style="height:50px;"></div>
     <div class="row">
         <div class="col">
             <a href="" ng-click="showListBottomSheet($event)"
                class="md-raised md-button md-default-theme material-background">List Bottom Sheet</a>
-            <br/>
+
             <a href="" ng-click="showGridBottomSheet($event)"
                class="md-raised md-button md-default-theme material-background">Grid Bottom Sheet</a>
         </div>
