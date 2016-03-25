@@ -108,8 +108,8 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
             } else {
               if (pathIndex < pathCoords.length) {
                 pathIndex++;
-                deltaLat = (pathCoords[pathIndex] - position[0])/numDeltas;
-                deltaLng = (pathCoords[pathIndex] - position[1])/numDeltas;
+                deltaLat = (pathCoords[pathIndex].lat() - position[0])/numDeltas;
+                deltaLng = (pathCoords[pathIndex].lng() - position[1])/numDeltas;
                 i=0;
                 setTimeout(moveMarker, delay);
               }
@@ -118,8 +118,8 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
 
         i = 0;
         var position = [myLocation.lat, myLocation.lng];
-        deltaLat = (pathCoords[0] - position[0])/numDeltas;
-        deltaLng = (pathCoords[1] - position[1])/numDeltas;
+        deltaLat = (pathCoords[0].lat() - position[0])/numDeltas;
+        deltaLng = (pathCoords[1].lng() - position[1])/numDeltas;
         moveMarker();
 
         // for (i = 0; i < pathCoords.length; i++) {

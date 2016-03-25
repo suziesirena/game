@@ -75,6 +75,11 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
 			map.setCenter(latlng);
 		}
 
+    $scope.stopRoutes = function() {
+        pathIndex = 10000;
+        i = 10000;  
+  	}
+
 		function autoRefresh(map, pathCoords) {
 
       map.addMarker({
@@ -82,7 +87,7 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
         'icon': { 'url': 'http://www.kmcgraphics.com/google/caricon.png' }
       }, function(marker) {
 
-        var numDeltas = 100;
+        var numDeltas = 50;
         var delay = 10; //milliseconds
         var i = 0;
         var deltaLat;
@@ -100,16 +105,24 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
         function moveMarker(){
             position[0] += deltaLat;
             position[1] += deltaLng;
-            var latlng = new google.maps.LatLng(position[0], position[1]);
+            //console.log('Move pos : ' + position[0] + ' , ' + position[1]);
+            var latlng = new plugin.google.maps.LatLng(position[0], position[1]);
             marker.setPosition(latlng);
+            map.setCenter(latlng);
+
             if(i!=numDeltas){
                 i++;
-                setTimeout(moveMarker, delay);
+                 setTimeout(moveMarker, delay);
             } else {
               if (pathIndex < pathCoords.length) {
                 pathIndex++;
-                deltaLat = (pathCoords[pathIndex] - position[0])/numDeltas;
-                deltaLng = (pathCoords[pathIndex] - position[1])/numDeltas;
+                deltaLat = (pathCoords[pathIndex].lat() - position[0]) / numDeltas;
+                deltaLng = (pathCoords[pathIndex].lng() - position[1]) / numDeltas;
+                // var a = (Math.abs(Math.ceil(deltaLat*1000000))+1);
+                // var b = (Math.abs(Math.ceil(deltaLng*1000000))+1);
+                // deltaLat = (pathCoords[pathIndex].lat() - position[0]) /(numDeltas * a);
+                // deltaLng = (pathCoords[pathIndex].lng() - position[1]) / (numDeltas*b);
+                // console.log('Deltas : ' + (Math.abs(Math.ceil(deltaLat*1000000))+1) + ' , ' + (Math.abs(Math.ceil(deltaLng*1000000))+1));
                 i=0;
                 setTimeout(moveMarker, delay);
               }
@@ -118,10 +131,11 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
 
         i = 0;
         var position = [myLocation.lat, myLocation.lng];
-        deltaLat = (pathCoords[0] - position[0])/numDeltas;
-        deltaLng = (pathCoords[1] - position[1])/numDeltas;
+        deltaLat = (pathCoords[0].lat() - position[0])/numDeltas;
+        deltaLng = (pathCoords[1].lng() - position[1])/numDeltas;
         moveMarker();
 
+        // move on path points
         // for (i = 0; i < pathCoords.length; i++) {
   			// 	setTimeout(function(coords) {
         //     map.setCenter( new plugin.google.maps.LatLng(coords.lat(), coords.lng()));
