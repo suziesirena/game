@@ -102,4 +102,6 @@
     <preference name="apiKey" value="8175dd21d74b64710d0d44bf1e0025af" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="OpenAllWhitelistURLsInWebView" value="true" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
 </widget>

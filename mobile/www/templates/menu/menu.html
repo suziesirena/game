@@ -4,14 +4,15 @@
 <!--Controller path : www/templates/menu/js/controllers.js-->
 <!--State name : app-->
 <!--URL : #app-->
+
 <ion-drawer-vertical-wrapper  direction="down" state="closed">
   <ion-drawer-vertical-content>
-    Notifications
   </ion-drawer-vertical-content>
   <ion-drawer-vertical-handle />
 </ion-drawer-vertical-wrapper>
+<!-- <img src="images/statusbar.png" height="75"/> -->
 
-<ion-side-menus enable-menu-with-back-views="true">
+<ion-side-menus enable-menu-with-back-views="true" style="top:25px;">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced  material-background-nav-bar">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
@@ -29,31 +30,7 @@
 
 
         <ion-nav-view name="menuContent" ></ion-nav-view>
-        <div class="bar bar-footer" style="height: 94px;">
 
-<nav style="width: 100%;">
-          <div class="row">
-            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts<span class="badge red" style="left:70px;top:10px;right:inherit">8</span></div>
-            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
-            <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages</div>
-            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
-          </div>
-</nav>
-            <!-- <section class="container"> -->
-              <!-- <nav style="width: 100%;">
-                <ul>
-                  <li class="active"><a href="index.html">Dashboard</a></li>
-                  <li><a href="index.html">Tasks<span class="badge">4</span></a></li>
-                  <li><a href="index.html">Messages<span class="badge green">8</span></a></li>
-                  <li><a href="index.html">Settings<span class="badge yellow">15</span></a></li>
-                  <li><a href="index.html">Notifications<span class="badge red">16</span></a></li>
-                  <li><a href="index.html">Logout</a></li>
-                </ul>
-              </nav> -->
-            <!-- </section> -->
-
-
-        </div>
     </ion-side-menu-content>
     <md-sidenav md-component-id="left" on-swipe-left="closeSideNav()" on-drag-left="closeSideNav()">
         <!--menu section-->

@@ -61,6 +61,8 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
 
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService) {
 
+ 
+
         //Create database table of contracts by using sqlite database.
         //Table schema :
         //Column	   Type	     Primary key

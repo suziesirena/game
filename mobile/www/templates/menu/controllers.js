@@ -104,31 +104,36 @@ appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $time
 
             if($ionicHistory.backView() === null){
 
+
+
                 //Check is popup dialog is not open.
                 if(jQuery('[id^=dialog]').length === 0 ) {
+
+
+                    navigateTo('app.home');
 
                     // mdDialog for show $mdDialog to ask for
                     // Confirmation to close the application.
 
-                    $mdDialog.show({
-                        controller: 'DialogController',
-                        templateUrl: 'confirm-dialog.html',
-                        targetEvent: null,
-                        locals: {
-                            displayOption: {
-                                title: "Confirmation",
-                                content: "Do you want to close the application?",
-                                ok: "Confirm",
-                                cancel: "Cancel"
-                            }
-                        }
-                    }).then(function () {
-                        //If user tap Confirm at the popup dialog.
-                        //Application will close.
-                        ionic.Platform.exitApp();
-                    }, function () {
-                        // For cancel button actions.
-                    }); //End mdDialog
+                    // $mdDialog.show({
+                    //     controller: 'DialogController',
+                    //     templateUrl: 'confirm-dialog.html',
+                    //     targetEvent: null,
+                    //     locals: {
+                    //         displayOption: {
+                    //             title: "Confirmation",
+                    //             content: "Do you want to close the application?",
+                    //             ok: "Confirm",
+                    //             cancel: "Cancel"
+                    //         }
+                    //     }
+                    // }).then(function () {
+                    //     //If user tap Confirm at the popup dialog.
+                    //     //Application will close.
+                    //     ionic.Platform.exitApp();
+                    // }, function () {
+                    //     // For cancel button actions.
+                    // }); //End mdDialog
                 }
             }
             else{
