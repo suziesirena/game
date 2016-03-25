@@ -35,7 +35,7 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
     map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
 
   function onMapReady() {
-
+      console.log('Map ready');
       map.getMyLocation(function(location) {
       var msg = ["Current your location:\n",
         "latitude:" + location.latLng.lat,
@@ -82,13 +82,54 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
         'icon': { 'url': 'http://www.kmcgraphics.com/google/caricon.png' }
       }, function(marker) {
 
-        for (i = 0; i < pathCoords.length; i++) {
-  				setTimeout(function(coords) {
-            map.setCenter( new plugin.google.maps.LatLng(coords.lat(), coords.lng()));
-            marker.setPosition( new plugin.google.maps.LatLng(coords.lat(), coords.lng()))
-            console.log('Move location : ' + coords.lat() + ' - ' + coords.lng());
-  				}, 800 * i, pathCoords[i]);
-  			}
+        var numDeltas = 100;
+        var delay = 10; //milliseconds
+        var i = 0;
+        var deltaLat;
+        var deltaLng;
+
+        // function transition(pathCoords){
+        //     i = 0;
+        //     deltaLat = (pathCoords[0] - position[0])/numDeltas;
+        //     deltaLng = (pathCoords[1] - position[1])/numDeltas;
+        //     moveMarker();
+        // }
+
+        pathIndex = 0;
+
+        function moveMarker(){
+            position[0] += deltaLat;
+            position[1] += deltaLng;
+            var latlng = new google.maps.LatLng(position[0], position[1]);
+            marker.setPosition(latlng);
+            if(i!=numDeltas){
+                i++;
+                setTimeout(moveMarker, delay);
+            } else {
+              if (pathIndex < pathCoords.length) {
+                pathIndex++;
+                deltaLat = (pathCoords[pathIndex] - position[0])/numDeltas;
+                deltaLng = (pathCoords[pathIndex] - position[1])/numDeltas;
+                i=0;
+                setTimeout(moveMarker, delay);
+              }
+            }
+        }
+
+        i = 0;
+        var position = [myLocation.lat, myLocation.lng];
+        deltaLat = (pathCoords[0] - position[0])/numDeltas;
+        deltaLng = (pathCoords[1] - position[1])/numDeltas;
+        moveMarker();
+
+        // for (i = 0; i < pathCoords.length; i++) {
+  			// 	setTimeout(function(coords) {
+        //     map.setCenter( new plugin.google.maps.LatLng(coords.lat(), coords.lng()));
+        //     marker.setPosition( new plugin.google.maps.LatLng(coords.lat(), coords.lng()))
+        //     console.log('Move location : ' + coords.lat() + ' - ' + coords.lng());
+  			// 	}, 800 * i, pathCoords[i]);
+  			// }
+
       });
 		}
 
@@ -106,9 +147,9 @@ appControllers.controller('mapCtrl', ['$rootScope', '$scope', '$mdToast', functi
 				destination:'mairie de clichy france',
 				travelMode: google.maps.TravelMode.WALKING
 			};
-			directionsService.route(request, function(result, status) {
+			directionsService.route(request, function(pathCoords, status) {
 				if (status == google.maps.DirectionsStatus.OK) {
-					autoRefresh(map, result.routes[0].overview_path);
+					autoRefresh(map, pathCoords.routes[0].overview_path);
 				}
 			});
 		}
