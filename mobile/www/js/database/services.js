@@ -33,4 +33,10 @@ appServices.factory('database', function($rootScope, $cordovaSQLite) {
             return "Factory says \"Goodbye " + text + "\"";
         }
     }
+})
+.factory('Book', function($ngData) {
+
+    var Book = $ngData.model('Book');
+
+    return Book;
 });

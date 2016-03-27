@@ -56,12 +56,29 @@ window.globalVariable = {
 
 
 var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services',
-               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services', 'ionic.contrib.drawer.vertical', ])
+               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services', 'ionic.contrib.drawer.vertical', 'ngData'])
 
 
-    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia) {
+    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia, $ngData) {
 
+      $ngData.model('Book', {
+          tableName: 'books',
+          properties: {
+              name: String,
+              author: Object,
+              isbn: {
+                  type: String,
+                  required: true,
+                  unique: false
+              }
+          }
+      });
 
+      $ngData.initialize().then(function(results) {
+          console.log(results);
+      }).catch(function(error) {
+          console.log(error);
+      });
 
         function initialRootScope() {
             $rootScope.appPrimaryColor = appPrimaryColor;// Add value of appPrimaryColor to rootScope for use it to base color.
@@ -155,4 +172,12 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
     })
     .config(function( $mdGestureProvider ) {
         $mdGestureProvider.skipClickHijack();
+    })
+    .config(function($databaseProvider) {
+
+        $databaseProvider.name = 'books';
+        $databaseProvider.description = 'books  database';
+        $databaseProvider.version = '1.0.0';
+        $databaseProvider.size = 4 * 1024 * 1024;
+
     })
