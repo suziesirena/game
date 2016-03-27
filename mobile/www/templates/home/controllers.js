@@ -1,4 +1,30 @@
-appControllers.controller('homeCtrl', function ($scope, $mdBottomSheet, $mdToast) {
+appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomSheet, $mdToast, $ionicModal) {
+
+
+  $scope.openModal = function(){
+    $scope.modal.show();
+  }
+
+  $scope.closeModal = function(){
+    $scope.modal.hide();
+    $rootScope.firstUse = '0%';
+  }
+  //
+  // $ionicModal.fromTemplateUrl('templates/transparent.html', {
+  //       scope: $scope,
+  //     }).then(function(modal) {
+  //       $scope.transparent = modal;
+  //       if (true){
+  //       modal.show();
+  //       }
+  //     });
+
+  $ionicModal.fromTemplateUrl('templates/about.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
 
   $scope.showListBottomSheet = function ($event) {
       $mdBottomSheet.show({

@@ -39,4 +39,10 @@ appServices.factory('database', function($rootScope, $cordovaSQLite) {
     var Book = $ngData.model('Book');
 
     return Book;
+})
+.factory('User', function($ngData) {
+
+    var User = $ngData.model('User');
+
+    return User;
 });

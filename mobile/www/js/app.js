@@ -61,24 +61,7 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
 
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia, $ngData) {
 
-      $ngData.model('Book', {
-          tableName: 'books',
-          properties: {
-              name: String,
-              author: Object,
-              isbn: {
-                  type: String,
-                  required: true,
-                  unique: false
-              }
-          }
-      });
-
-      $ngData.initialize().then(function(results) {
-          console.log(results);
-      }).catch(function(error) {
-          console.log(error);
-      });
+        $rootScope.firstUse = "100%";
 
         function initialRootScope() {
             $rootScope.appPrimaryColor = appPrimaryColor;// Add value of appPrimaryColor to rootScope for use it to base color.
@@ -105,6 +88,7 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
                 StatusBar.styleDefault();
             }
 
+            initDatabase($ngData);
             initialSQLite($cordovaSQLite);
             initialRootScope();
 
@@ -175,8 +159,8 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
     })
     .config(function($databaseProvider) {
 
-        $databaseProvider.name = 'books';
-        $databaseProvider.description = 'books  database';
+        $databaseProvider.name = 'anotherlife';
+        $databaseProvider.description = 'anotherlife  database';
         $databaseProvider.version = '1.0.0';
         $databaseProvider.size = 4 * 1024 * 1024;
 
