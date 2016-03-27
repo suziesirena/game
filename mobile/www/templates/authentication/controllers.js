@@ -25,5 +25,6 @@ appControllers
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
+      $rootScope.firstUse = '0%';
     };
   });
