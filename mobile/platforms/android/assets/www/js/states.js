@@ -1,3 +1,14 @@
+//$stateProvider is using for add or edit HTML view to navigation bar.
+//
+//Schema :
+//state_name(String)      : Name of state to use in application.
+//page_name(String)       : Name of page to present at localhost url.
+//cache(Bool)             : Cache of view and controller default is true. Change to false if you want page reload when application navigate back to this view.
+//html_file_path(String)  : Path of html file.
+//controller_name(String) : Name of Controller.
+//
+//Learn more about ionNavView at http://ionicframework.com/docs/api/directive/ionNavView/
+//Learn more about  AngularUI Router's at https://github.com/angular-ui/ui-router/wiki
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -147,6 +158,15 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         views: {
           'menuContent': {
             templateUrl: 'templates/notification/notification.html',
+          }
+        }
+      })
+      .state('app.test', {
+        url: '/test',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/test/test.html',
+            controller: 'testCtrl'            
           }
         }
       })

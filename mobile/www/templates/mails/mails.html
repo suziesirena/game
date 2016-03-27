@@ -1,0 +1,12 @@
+<ion-view view-title="Mails">
+    <ion-content>
+
+            <div class="list" nb-controller="mailsCtrl">
+                <a class="item item-avatar" href="#" ng-repeat="mail in mails">
+                  <img src="images/pnj1.png">
+                  <h2>{{mail.transmitter}}</h2>
+                  <p style="font-weight: bold;">{{mail.subject}}</p>
+                  <p style="white-space: initial;">{{mail.content}}</p>
+                </a>
+    </ion-content>
+</ion-view>
