@@ -1,2 +1,2 @@
-wakandaServerURL = 'http://eaf4e268.ngrok.io/';
-nodeServerURL = 'http://b80d7a5b.ngrok.io/';
+wakandaServerURL = 'http://036a2ff8.ngrok.io/';
+nodeServerURL = 'http://283f8b8e.ngrok.io/';
