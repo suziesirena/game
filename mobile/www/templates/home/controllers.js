@@ -1,29 +1,11 @@
-appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomSheet, $mdToast, $ionicModal, $state) {
+appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomSheet, $mdToast, $ionicModal, $state, Util) {
 
 
-  $scope.openModal = function(){
-    $scope.modal.show();
-  }
-
-  $scope.closeModal = function(){
-    $scope.modal.hide();
-    $state.go('app.login');
-  }
-  //
-  // $ionicModal.fromTemplateUrl('templates/transparent.html', {
-  //       scope: $scope,
-  //     }).then(function(modal) {
-  //       $scope.transparent = modal;
-  //       if (true){
-  //       modal.show();
-  //       }
-  //     });
-  $ionicModal.fromTemplateUrl('templates/about.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
+// `      $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+//         if (!Util.isAuthenticated()) {
+//           $rootScope.openModal();
+//         }
+//       });`
 
   $scope.showListBottomSheet = function ($event) {
       $mdBottomSheet.show({

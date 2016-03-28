@@ -23,12 +23,29 @@ function initDatabase($ngData) {
           email        : String,
           createDate   : Date,
           age          : Number,
-          isEnable     : Boolean
+          firstUse     : Boolean
       }
   });
 
+  $ngData.model('Scenario', {
+      tableName: 'scenario',
+      properties: {
+          title        : String
+      }
+  });
+
+  $ngData.model('Event', {
+      tableName: 'scenario',
+      properties: {
+          title        : String,
+          Date          ; Number
+      }
+  });
+
+
   $ngData.initialize().then(function(results) {
       console.log(results);
+
   }).catch(function(error) {
       console.log(error);
   });

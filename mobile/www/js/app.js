@@ -55,13 +55,31 @@ window.globalVariable = {
 };// End Global variable
 
 
+
 var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services',
-               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services', 'ionic.contrib.drawer.vertical', 'ngData'])
+               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services',
+               'ionic.contrib.drawer.vertical', 'ngData', 'util.services'])
 
 
-    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia, $ngData) {
+    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory,
+                   $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia,
+                   $ngData, $ionicModal) {
 
-        $rootScope.firstUse = "100%";
+         $rootScope.closeModal = function(){
+           $state.go('app.login');
+           $rootScope.modal.hide();
+         }
+
+         $rootScope.openModal = function(){
+           $rootScope.modal.show();
+         }
+
+        $ionicModal.fromTemplateUrl('templates/about.html', {
+              scope: $rootScope,
+              animation: 'slide-in-up'
+            }).then(function(modal) {
+              $rootScope.modal = modal;
+            });
 
         function initialRootScope() {
             $rootScope.appPrimaryColor = appPrimaryColor;// Add value of appPrimaryColor to rootScope for use it to base color.
@@ -88,8 +106,8 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
                 StatusBar.styleDefault();
             }
 
-            initDatabase($ngData);
             initialSQLite($cordovaSQLite);
+            initDatabase($ngData);
             initialRootScope();
 
             //Checking if view is changing it will go to this function.

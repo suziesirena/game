@@ -578,7 +578,7 @@ app.post('/auth/facebook', function(req, res) {
           User.findById(payload.sub, function(err, user) {
             if (!user) {
               return res.status(400).send({ message: 'User not found' });
-            }
+            }c
             user.facebook = profile.id;
             user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
             user.displayName = user.displayName || profile.name;
@@ -588,10 +588,10 @@ app.post('/auth/facebook', function(req, res) {
             });
           });
         });
-      } else {
+      } else { console.log('profile.id  :' + profile.id);
         // Step 3. Create a new user account or return an existing one.
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
-          if (existingUser) {
+          if (existingUser) { console.log('user exists');
             var token = createJWT(existingUser);
             return res.send({ token: token });
           }
