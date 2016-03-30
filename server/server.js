@@ -50,6 +50,7 @@ app.use(express.static('www'));
 var config = require('./config');
 
 var userSchema = new mongoose.Schema({
+  // email: { type: String, unique: true, lowercase: true },
   email: { type: String, unique: true, lowercase: true },
   password: { type: String, select: false },
   displayName: String,
@@ -582,7 +583,15 @@ app.post('/auth/facebook', function(req, res) {
             user.facebook = profile.id;
             user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
             user.displayName = user.displayName || profile.name;
-            user.save(function() {
+            user.email = profile.email;
+            user.save(function(err) {
+
+              if (err) {
+                   console.log('Not able to save: '+ err);
+               } else {
+                   console.log('Saved: ' );
+               }
+
               var token = createJWT(user);
               res.send({ token: token });
             });
@@ -591,7 +600,8 @@ app.post('/auth/facebook', function(req, res) {
       } else { console.log('profile.id  :' + profile.id);
         // Step 3. Create a new user account or return an existing one.
         User.findOne({ facebook: profile.id }, function(err, existingUser) {
-          if (existingUser) { console.log('user exists');
+          if (existingUser) {
+            console.log('user exists');
             var token = createJWT(existingUser);
             return res.send({ token: token });
           }
@@ -599,7 +609,16 @@ app.post('/auth/facebook', function(req, res) {
           user.facebook = profile.id;
           user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
           user.displayName = profile.name;
-          user.save(function() {
+          user.email = profile.email;
+          console.log('user saved');
+          user.save(function(err) {
+
+            if (err) {
+                 console.log('Not able to save: '+ err);
+             } else {
+                 console.log('Saved: ' );
+             }
+
             var token = createJWT(user);
             res.send({ token: token });
           });
@@ -1016,7 +1035,7 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
 var usernames = {};
 
 // TODO : find server adress automatically
-var nodeServerURL = 'http://099f5f1b.ngrok.io/';
+var nodeServerURL = 'http://01d77459.ngrok.io/';
 
 io.on('connection', function (socket) {
   var addedUser = false;

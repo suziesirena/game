@@ -26,6 +26,7 @@ try {
 } catch (err) { console.error("Error: ", err.message); }
 
 var db = null; //Use for SQLite database.
+
 window.globalVariable = {
     //custom color style variable
     color: {
@@ -64,6 +65,10 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory,
                    $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia,
                    $ngData, $ionicModal) {
+
+          initDatabase($ngData, $cordovaSQLite);
+          $rootScope.newMails=0;
+
 
          $rootScope.closeModal = function(){
            $state.go('app.login');
@@ -106,10 +111,9 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
                 StatusBar.styleDefault();
             }
 
-            initialSQLite($cordovaSQLite);
-            initDatabase($ngData);
+            //initialSQLite($cordovaSQLite);
             initialRootScope();
-
+            //initEvents();
             //Checking if view is changing it will go to this function.
             $rootScope.$on('$ionicView.beforeEnter', function () {
                 //hide Action Control for android back button.
@@ -123,7 +127,8 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
 
     })
 
-    .config(function ($ionicConfigProvider, $stateProvider, $authProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, $mdIconProvider) {
+    .config(function ($ionicConfigProvider, $stateProvider, $authProvider, $urlRouterProvider, $mdThemingProvider,
+                      $mdIconProvider, $mdColorPalette, $mdIconProvider) {
 
         // Use for change ionic spinner to android pattern.
         $ionicConfigProvider.spinner.icon("android");

@@ -1,48 +1,13 @@
-appServices.factory('database', function($rootScope, $cordovaSQLite) {
+appServices.factory('database', function() {
 
-    return {
-        newMail: function(text){
 
-            var query = "INSERT INTO mails ("+
-                       "  transmitter, " +
-                       "  subject, " +
-                       "  content, " +
-                       "  createDate) " +
-                       "  VALUES (?,?,?,?)";
 
-            var newMail = {
-               transmitter : 'The Agency',
-               subject     : 'Phone activation',
-               content     : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-               createDate  : Date.now()
-            };
-
-            $cordovaSQLite.execute(db, query,
-               [ newMail.transmitter,
-                 newMail.subject,
-                 newMail.content,
-                 newMail.createDate
-               ]).then(function (res)
-               {
-                 console.log('Mail inserted : ' + res.insertId);
-               });
-
-        },
-
-        sayGoodbye: function(text){
-            return "Factory says \"Goodbye " + text + "\"";
-        }
-    }
 })
-.factory('Book', function($ngData) {
-
-    var Book = $ngData.model('Book');
-
-    return Book;
-})
-.factory('User', function($ngData) {
-
-    var User = $ngData.model('User');
-
-    return User;
-});
+.factory('AppSettings', function($ngData) { return $ngData.model('AppSettings'); })
+.factory('PNJ', function($ngData) { return $ngData.model('PNJ'); })
+.factory('Event', function($ngData) { return $ngData.model('Event'); })
+.factory('Action', function($ngData) { return $ngData.model('Action'); })
+.factory('Mail', function($ngData) { return $ngData.model('Mail'); })
+.factory('User', function($ngData) { return $ngData.model('User'); })
+.factory('Event', function($ngData) { return $ngData.model('Event'); })
+.factory('Scenario', function($ngData) { return $ngData.model('Scenario'); })

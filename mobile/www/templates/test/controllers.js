@@ -1,13 +1,8 @@
-appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ionicModal', 'sound', 'database', 'Book', 'User', function ($rootScope, $scope, $mdToast, $ionicModal, sound, database, Book, User) {
-
-  $rootScope.newMails=0;
-
+appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ionicModal', 'sound', '$ngData', '$cordovaSQLite', 'Eventservices', 'User', 'PNJ',
+function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, Eventservices, User, PNJ) {
 
   $scope.test1 = function () {
-
-    $rootScope.newMails ++;
-    sound.notification();
-    database.newMail();
+    Eventservices.newMail(event)
   };
 
   $scope.test2 = function () {
@@ -15,8 +10,8 @@ appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ion
   };
 
   $scope.test3 = function () {
+}
 
-  }
 
   $scope.openModal = function(){
     $scope.modal.show();
@@ -36,24 +31,7 @@ appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ion
         //   $scope.openModal();
         // }
       });
-
-  $scope.user = User.new();
-
-    User.create([{
-      firstName   : 'Suzie',
-      lastName    : 'Sirena',
-      telephone   : '0679956247',
-      email       : 'suzie.sirena@gmail.com',
-      createDate  : Date.now(),
-      age         : 21,
-      isEnable    : 'true'
-    }])
-    .then(function(users) {
-        console.log('User inserted : ' + JSON.stringify(users));
-    })
-    .catch(function(error) {
-        console.log(error.message);
-    });
+  //
 
   // $scope.index = function(offset, limit) {
   //     Book.find().limit(limit).offset(offset).then(function(books) {

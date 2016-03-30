@@ -55,12 +55,19 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
               }
           }
       })
-      // .state('employee', {
-      //     url: '/employees/:employeeId',
-      //     templateUrl: 'templates/contacts/employee-detail.html',
-      //     controller: 'EmployeeDetailCtrl'
-      // })
-      //
+      .state('app.contact', {
+          url: '/contact',
+          params: {
+              contactdetail: null
+          },
+          views: {
+            'menuContent': {
+                  templateUrl: 'templates/contacts/contact-detail.html',
+                  controller: 'contactDetailCtrl'
+            }
+          }
+      })
+
       // .state('reports', {
       //     url: '/employees/:employeeId/reports',
       //     templateUrl: 'templates/contacts/employee-reports.html',
@@ -175,7 +182,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         views: {
           'menuContent': {
             templateUrl: 'templates/mails/mails.html',
-            controller: 'mailsCtrl'            
+            controller: 'mailsCtrl'
           }
         }
       })
