@@ -1,7 +1,6 @@
-<ion-view view-title="Mails">
+<ion-view view-title="Mails" ng-controller="mailsCtrl">
     <ion-content>
-
-            <div class="list" nb-controller="mailsCtrl">
+            <div class="list">
                 <a class="item item-avatar" href="#" ng-repeat="mail in mails">
                   <img src="images/pnj1.png">
                   <h2>{{mail.transmitter}}</h2>

@@ -2,7 +2,7 @@ appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ion
 function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, Eventservices, User, PNJ) {
 
   $scope.test1 = function () {
-    Eventservices.newMail(event)
+    //Eventservices.newMail(event)
   };
 
   $scope.test2 = function () {

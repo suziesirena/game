@@ -1,11 +1,11 @@
 
 
-<ion-view title="Home" ng-controller="homeCtrl" style="color:#fff; background-image:url('images/background.jpg');">
+<ion-view title="Home" style="color:#fff; background-image:url('images/background.jpg');">
   <ion-content>
     <div class="row" style="height:25px;"></div>
     <div class="row">
       <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts</div>
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
+      <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="newMails" class="badge red" style="left:70px;top:10px;right:inherit">{{newMails}}</span></div>
       <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages</div>
     </div>
     <div class="row" style="height:25px;"></div>

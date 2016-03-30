@@ -9,11 +9,11 @@ appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomShe
              Eventservices.newMail(event)
          })
 
-// `      $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+//       $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
 //         if (!Util.isAuthenticated()) {
 //           $rootScope.openModal();
 //         }
-//       });`
+//       });
 
   // console.log('-->' + Event.find());
 
