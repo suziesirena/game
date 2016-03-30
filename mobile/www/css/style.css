@@ -2014,3 +2014,7 @@ md-sidenav {
           color : #fff;
          background-color: inherit;
     }
+
+.notread {
+  font-weight: bold;
+}

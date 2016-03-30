@@ -3,9 +3,9 @@
             <div class="list">
                 <a class="item item-avatar" href="#" ng-repeat="mail in mails">
                   <img src="images/pnj1.png">
-                  <h2>{{mail.transmitter}}</h2>
+                  <h2>{{mail.fromPNJ}}</h2>
                   <p style="font-weight: bold;">{{mail.subject}}</p>
-                  <p style="white-space: initial;">{{mail.content}}</p>
+                  <p style="white-space: initial;" class="{{mail.read}}" ng-bind-html="mail.abstract"></p>
                 </a>
     </ion-content>
 </ion-view>

@@ -33,6 +33,7 @@ function initDatabase($ngData) {
       properties: {
           type          : String,
           fromPNJ       : Number,
+          abstract      : String,          
           scheduledTime : Number,
           content       : String
       },
@@ -59,9 +60,12 @@ function initDatabase($ngData) {
     properties: {
        fromPNJ          : String,
        subject          : String,
+       abstract         : String,
        content          : String,
-       createDate       : Number
-     }       
+       createDate       : Number,
+       read             : String,
+       answered         : String
+     }
   });
 
   $ngData.model('User', {

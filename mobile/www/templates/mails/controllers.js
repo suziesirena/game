@@ -1,4 +1,4 @@
-appControllers.controller('mailsCtrl', function ($rootScope, $scope, Mail) {
+appControllers.controller('mailsCtrl', function ($rootScope, $scope, $sanitize, Mail) {
 
 
   $scope.allMails = function() {

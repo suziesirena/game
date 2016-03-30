@@ -4,7 +4,8 @@ appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomShe
              type          : 'mail',
              fromPNJ       : 1,
              scheduledTime : 2000,
-             content       : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<button class="button button-block button-positive" ng-click="closeModal()">Connect to the Agency</button>'
+             abstract      : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions...',
+             content       : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<br/><div class="button button-block button-positive" ng-click="closeModal()">Connect to the Agency</div>'
          }).then(function(event) {
              Eventservices.newMail(event)
          })

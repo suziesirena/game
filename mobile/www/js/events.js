@@ -4,10 +4,14 @@ appServices.factory('Eventservices', function($rootScope, Mail, sound) {
       newMail: function(event){
         setTimeout(function(event){
           Mail.create([{
-               fromPNJ     : event.fromPNJ,
-               subject     : event.subject,
-               content     : event.content,
-               createDate  : Date.now()
+               fromPNJ        : event.fromPNJ,
+               subject        : event.subject,
+               abstract       : event.abstract,
+               content        : event.content,
+               createDate     : Date.now(),
+               read           : 'notread',
+               answered       : ''
+
           }])
           .then(function(mail) {
               console.log('Mail inserted : ' + JSON.stringify(mail));
