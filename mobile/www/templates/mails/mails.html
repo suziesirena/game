@@ -1,4 +1,4 @@
-<ion-view view-title="Mails" ng-controller="mailsCtrl">
+<ion-view view-title="Mails">
     <ion-content>
             <div class="list">
               <div ng-repeat="mail in mails">
@@ -7,6 +7,7 @@
                   <h2>{{mail.senderName}}</h2>
                   <p style="font-weight: bold;">{{mail.subject}}</p>
                   <p style="white-space: initial;" class="{{mail.read}}" ng-bind-html="mail.abstract"></p>
+                  </hr>
                 </a>
             </div>
           </div>

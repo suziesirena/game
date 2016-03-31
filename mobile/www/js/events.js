@@ -17,8 +17,10 @@ appServices.factory('Eventservices', function($rootScope, Mail, PNJ, sound) {
               }])
               .then(function(mail) {
                   console.log('Mail inserted : ' + JSON.stringify(mail));
-                  $rootScope.newMails ++;
-                   sound.notification();
+                  $rootScope.unreadMails ++;
+                  $rootScope.appSettings.unreadMails ++;
+                  $rootScope.appSettings.save();
+                  sound.notification();
               })
               .catch(function(error) {
                   console.log(error.message);

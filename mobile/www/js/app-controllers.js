@@ -2,14 +2,21 @@
 appControllers.controller('AppCtrl',
                               function($scope, $http, $mdSidenav, $rootScope, $ngData, $cordovaSQLite, AppSettings, Eventservices) {
 
-AppSettings.findOne().then(function(settings) {
-  if (!settings) {
-    AppSettings.create({ phoneActivated : 'false' });
+AppSettings.findOne().then(function(appSettings) {
+  if (!appSettings) {
+    AppSettings.create({
+      phoneActivated : 'false',
+      unreadMails    : 0
+    }).then(function(appSettings) {
+      $rootScope.appSettings    = appSettings;
+    });
     $rootScope.phoneActivated = true;
     populateData($ngData, Eventservices);
 
   } else {
-    $rootScope.phoneActivated = (settings.phoneActivated == 'true') ? true : false;
+    $rootScope.appSettings    = appSettings;
+    $rootScope.phoneActivated = (appSettings.phoneActivated == 'true') ? true : false;
+    $rootScope.unreadMails    = appSettings.unreadMails;
   }
 });
 

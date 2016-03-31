@@ -4,7 +4,8 @@ function initDatabase($ngData) {
   $ngData.model('AppSettings', {
       tableName: 'settings',
       properties: {
-          phoneActivated : Boolean
+          phoneActivated  : Boolean,
+          unreadMails     : Number,
       }
   });
 

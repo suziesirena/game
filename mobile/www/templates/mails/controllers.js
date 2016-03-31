@@ -25,6 +25,11 @@ appControllers
   if ($stateParams.mailDetail) {
     $scope.mailContent = $sce.trustAsHtml($stateParams.mailDetail.content);
     $scope.mail = $stateParams.mailDetail;
+    $scope.mail.read = 'read';
+    $scope.mail.save();
+    $rootScope.appSettings.unreadMails --;
+    $rootScope.appSettings.save();
+
   } else {
     $state.go('app.mails')
   }

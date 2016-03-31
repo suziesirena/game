@@ -17,7 +17,7 @@ appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $time
 
       });
 
-      $rootScope.newMails=0;
+      $rootScope.unreadMails=0;
 
     };
 

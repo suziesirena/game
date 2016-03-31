@@ -1,6 +1,6 @@
 appControllers
 
-.controller('contactListCtrl', function ($rootScope, $scope, $state, $mdToast, PNJ) {
+.controller('contactListCtrl', function ($rootScope, $scope, $state, $mdToast, $auth, PNJ) {
 
     $scope.allContacts = function() {
       PNJ.find().then(function(pnjs){
@@ -16,12 +16,15 @@ appControllers
     });
 
     $scope.navigateTo = function (targetPage, objectData) {
-      if ($rootScope.phoneActivated && (targetPage == 'app.call' || targetPage == 'app.sms'  )) {
-        toastNotActivated();
-      } else {
+
+      if ($rootScope.phoneActivated && $auth.isAuthenticated() && (targetPage == 'app.call' || targetPage == 'app.sms'  )) {
         $state.go(targetPage, {
             contactdetail: objectData,
         });
+      } else if ($rootScope.phoneActivated && !$auth.isAuthenticated()) {
+        $state.go('app.login');
+      } else {
+        toastNotActivated();
       }
     };
 

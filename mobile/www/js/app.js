@@ -67,8 +67,6 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
                    $ngData, $ionicModal) {
 
           initDatabase($ngData, $cordovaSQLite);
-          $rootScope.newMails=0;
-
 
          $rootScope.closeModal = function(){
            $state.go('app.login');
