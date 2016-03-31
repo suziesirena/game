@@ -195,6 +195,17 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('app.terminal', {
+        url: '/terminal',
+        params: {
+        },
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/terminal/terminal.html',
+            controller: 'terminalCtrl'
+          }
+        }
+      })
   $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
 
 });

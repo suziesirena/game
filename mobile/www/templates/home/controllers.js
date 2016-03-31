@@ -6,9 +6,9 @@ appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomShe
              type          : 'mail',
              senderID      : 1,
              scheduledTime : 2000,
-             subject       : 'Phone activation',
-             abstract      : 'You have been recruited to serve the cause of the agency...',
-             content       : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<br/><a class="button button-block button-positive" href="#/app/login">Connect to the Agency</a>'
+             subject       : 'You are about to join us',
+             abstract      : 'Do not read this mail if you are not ready',
+             content       : 'This is your decision to click on this button<br/><a class="button button-block button-positive" href="#/app/login">Connect to the Agency</a>'
          }).then(function(event) {
              Eventservices.newMail(event)
          })
