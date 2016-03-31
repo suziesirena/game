@@ -1,5 +1,6 @@
 // Controller of menu dashboard page.
-appControllers.controller('facetimeCtrl', ['$rootScope', '$scope', '$mdToast', function ($rootScope, $scope, $mdToast) {
+appControllers
+.controller('facetimeCtrl', function ($rootScope, $scope, $mdToast) {
 
   $rootScope.$watch('pnjs', function() {
     $scope.pnjs = $rootScope.pnjs;
@@ -23,4 +24,8 @@ appControllers.controller('facetimeCtrl', ['$rootScope', '$scope', '$mdToast', f
             }
         });
     }; // End showToast.
-  }]);
+})
+
+.controller('callCtrl', function ($rootScope, $scope, $mdToast) {
+
+})

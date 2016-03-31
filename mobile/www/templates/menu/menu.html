@@ -17,12 +17,10 @@
         <ion-nav-bar class="bar-balanced  material-background-nav-bar">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
-            <ion-nav-buttons side="left">
-                <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
-            </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                <a class="button button-icon button-clear ion-ios-loop-strong" ng-click="resetApplication();"></a>
-                <a class="button button-icon button-clear ion-navicon" ng-click="navigateTo('app.home');"></a>
+              <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
+              <a class="button button-icon button-clear ion-ios-loop-strong" ng-click="resetApplication();"></a>
+              <a class="button button-icon button-clear ion-grid" ng-click="navigateTo('app.home');"></a>
             </ion-nav-buttons>
 
         </ion-nav-bar>

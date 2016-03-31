@@ -4,12 +4,12 @@ appControllers.controller('AppCtrl',
 
 AppSettings.findOne().then(function(settings) {
   if (!settings) {
-    AppSettings.create({ firstUse : 'true' });
-    $rootScope.firstUse = true;
+    AppSettings.create({ phoneActivated : 'false' });
+    $rootScope.phoneActivated = true;
     populateData($ngData, Eventservices);
 
   } else {
-    $rootScope.firstUse = settings.firstUse;
+    $rootScope.phoneActivated = (settings.phoneActivated == 'true') ? true : false;
   }
 });
 

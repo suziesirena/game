@@ -1,11 +1,13 @@
 appControllers
-  .controller('LoginCtrl', ['$rootScope', '$scope', '$ionicPopup', '$auth', 'User', function($rootScope, $scope, $ionicPopup, $auth, User) {
+  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, User, AppSettings) {
+
+    $scope.AppSettings = AppSettings;
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
         .then(function(response) {
 
-          alert(JSON.stringify(response));
+          //alert(JSON.stringify(response));
           // $scope.user = User.new();
           //
           //   User.create([{
@@ -26,8 +28,9 @@ appControllers
           //
           $ionicPopup.alert({
             title: 'Success',
-            content: 'You have successfully logged in!'
+            content: 'Your phone is activated!'
           });
+          $scope.activatePhone();
         })
         .catch(function(response) {
           $ionicPopup.alert({
@@ -38,6 +41,13 @@ appControllers
         });
     };
 
+    $scope.activatePhone = function(){
+      $scope.AppSettings.findOne().then(function(appSettings) {
+        appSettings.phoneActivated = 'true';
+        appSettings.save();
+      });
+      $rootScope.phoneActivated = true;
+    }
 
     $scope.logout = function() {
       $auth.logout();
@@ -45,6 +55,5 @@ appControllers
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
-      $rootScope.firstUse = '0%';
     };
-  }]);
+  });

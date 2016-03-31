@@ -1,5 +1,5 @@
-appControllers.controller('mailsCtrl', function ($rootScope, $scope, $sanitize, Mail) {
-
+appControllers
+.controller('mailsCtrl', function ($rootScope, $scope, $state, $sce, Mail) {
 
   $scope.allMails = function() {
     Mail.find().then(function(mails){
@@ -14,31 +14,18 @@ appControllers.controller('mailsCtrl', function ($rootScope, $scope, $sanitize, 
     }
   });
 
-  // db = window.cordova ? $cordovaSQLite.openDB("anotherlife.db") : window.openDatabase("anotherlife.db", "1.0", "AnotherLifeDB", -1);
-  //
-  // $scope.all = function($cordovaSQLite){
-  //
-  //   var query = "SELECT * FROM mails";
-  //   var mails = [];
-  //   $cordovaSQLite.execute(db, query).then(function (res)
-  //   {
-  //       if (res.rows.length > 0)
-  //       {
-  //           for (var i = 0; i < res.rows.length; i++)
-  //           {
-  //               var dataItem = {
-  //                   id          : res.rows.item(i).id,
-  //                   transmitter : res.rows.item(i).transmitter,
-  //                   subject     : res.rows.item(i).subject,
-  //                   content     : res.rows.item(i).content.substr(0, 200)
-  //               };
-  //               mails.push(dataItem);
-  //           }
-  //       }
-  //   });
-  //   return mails;
-  // }
-  //
-  // $scope.mails = $scope.all($cordovaSQLite);
+  $scope.navigateTo = function (targetPage, objectData) {
+    $state.go(targetPage, {
+        mailDetail: objectData
+    });
+  };
+})
+.controller('mailCtrl', function ($rootScope, $scope, $stateParams, $state, $sce) {
 
-});
+  if ($stateParams.mailDetail) {
+    $scope.mailContent = $sce.trustAsHtml($stateParams.mailDetail.content);
+    $scope.mail = $stateParams.mailDetail;
+  } else {
+    $state.go('app.mails')
+  }
+})

@@ -1,15 +1,18 @@
 appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomSheet, $mdToast, $ionicModal, $state, Util, Eventservices, Event) {
 
+  if (!$rootScope.phoneActivated) {
+
    Event.create({
              type          : 'mail',
-             fromPNJ       : 1,
+             senderID      : 1,
              scheduledTime : 2000,
-             abstract      : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions...',
-             content       : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<br/><div class="button button-block button-positive" ng-click="closeModal()">Connect to the Agency</div>'
+             subject       : 'Phone activation',
+             abstract      : 'You have been recruited to serve the cause of the agency...',
+             content       : 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<br/><a class="button button-block button-positive" href="#/app/login">Connect to the Agency</a>'
          }).then(function(event) {
              Eventservices.newMail(event)
          })
-
+  }
 //       $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
 //         if (!Util.isAuthenticated()) {
 //           $rootScope.openModal();

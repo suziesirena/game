@@ -1,17 +1,17 @@
 <ion-view title="Contacts">
     <ion-content>
         <ion-list>
-            <ion-item ng-repeat="contact in contacts" type="item-text-wrap" class="item-avatar item-button-right">
-                <img src="img/pnj/{{contact.picture()}}"  ng-click="navigateTo('app.contact', contact)"/>
+            <ion-item ng-repeat="contact in contacts" type="item-text-wrap" class="item-avatar item-button-right" ng-click="navigateTo('app.contact', contact);">
+                <img src="img/pnj/{{contact.picture()}}" />
                 {{contact.firstName}} {{contact.lastName}}
                 <p>{{contact.title}}</p>
                 <div class="buttons">
-                    <button class="button button-energized" ng-click="call(contact)">
+                    <a class="button button-energized" ng-click="navigateTo('app.call', contact); $event.stopPropagation();">
                         <i class="icon ion-ios-telephone"></i>
-                    </button>
-                    <button class="button button-dark">
+                    </a>
+                    <a class="button button-dark"  ng-click="navigateTo('app.sms', contact); $event.stopPropagation();">
                         <i class="icon ion-android-textsms"></i>
-                    </button>
+                    </a>
                 </div>
             </ion-item>
         </ion-list>

@@ -2010,10 +2010,9 @@ md-sidenav {
       background-color: inherit;
     }
 
-    .pane, .view {
-          color : #fff;
-         background-color: inherit;
-    }
+.pane, .view {
+    background-color: #fff;
+}
 
 .notread {
   font-weight: bold;

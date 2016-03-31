@@ -5,7 +5,7 @@ angular.module('util.services', [])
         isAuthenticated: function(){
             return $auth.isAuthenticated();
         },
-        firstUse: function(){
+        phoneActivated: function(){
 
         },
         sayGoodbye: function(text){

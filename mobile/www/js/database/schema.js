@@ -4,7 +4,7 @@ function initDatabase($ngData) {
   $ngData.model('AppSettings', {
       tableName: 'settings',
       properties: {
-          firstUse     : Boolean
+          phoneActivated : Boolean
       }
   });
 
@@ -32,15 +32,21 @@ function initDatabase($ngData) {
       tableName: 'event',
       properties: {
           type          : String,
-          fromPNJ       : Number,
-          abstract      : String,          
+          senderID      : Number,
           scheduledTime : Number,
+          subject       : String,
+          abstract      : String,
           content       : String
       },
       methods:{
          triggerDate  : function(){
              return Date.now() + this.scheduledTime;
-         }
+         },
+      },
+      statics:{
+        senderName : function(pnj, id){
+            return pnj.findOne({id});
+        }
      }
   });
 
@@ -58,7 +64,8 @@ function initDatabase($ngData) {
   $ngData.model('Mail', {
     tableName: 'mail',
     properties: {
-       fromPNJ          : String,
+       senderName       : String,
+       senderId         : Number,
        subject          : String,
        abstract         : String,
        content          : String,
@@ -77,7 +84,7 @@ function initDatabase($ngData) {
           email        : String,
           createDate   : Date,
           age          : Number,
-          firstUse     : Boolean
+          phoneActivated : Boolean
       }
   });
 

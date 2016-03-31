@@ -1,11 +1,14 @@
 <ion-view view-title="Mails" ng-controller="mailsCtrl">
     <ion-content>
             <div class="list">
-                <a class="item item-avatar" href="#" ng-repeat="mail in mails">
+              <div ng-repeat="mail in mails">
+                <a class="item item-avatar" ng-click="navigateTo('app.mail', mail)">
                   <img src="images/pnj1.png">
-                  <h2>{{mail.fromPNJ}}</h2>
+                  <h2>{{mail.senderName}}</h2>
                   <p style="font-weight: bold;">{{mail.subject}}</p>
                   <p style="white-space: initial;" class="{{mail.read}}" ng-bind-html="mail.abstract"></p>
                 </a>
+            </div>
+          </div>
     </ion-content>
 </ion-view>
