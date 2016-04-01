@@ -12,6 +12,11 @@ function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQL
   $scope.test3 = function () {
 }
 
+$scope.populateData = function () {
+  populateData($ngData);
+
+}
+
 
   $scope.openModal = function(){
     $scope.modal.show();

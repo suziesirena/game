@@ -374,6 +374,13 @@ module.exports = [
         "clobbers": [
             "plugin.google.maps"
         ]
+    },
+    {
+        "file": "plugins/com.couchbase.lite.phonegap/www/cblite.js",
+        "id": "com.couchbase.lite.phonegap.CouchbaseLite",
+        "clobbers": [
+            "window.cblite"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -399,7 +406,8 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "1.0.8",
     "org.apache.cordova.speech.speechrecognition": "0.1.1",
     "phonegap-plugin-push": "1.6.0",
-    "plugin.google.maps": "1.3.9"
+    "plugin.google.maps": "1.3.9",
+    "com.couchbase.lite.phonegap": "1.2.0"
 };
 // BOTTOM OF METADATA
 });

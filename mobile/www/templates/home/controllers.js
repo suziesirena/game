@@ -2,16 +2,11 @@ appControllers.controller('homeCtrl', function ($rootScope, $scope, $mdBottomShe
 
   if (!$rootScope.phoneActivated) {
 
-   Event.create({
-             type          : 'mail',
-             senderID      : 1,
-             scheduledTime : 2000,
-             subject       : 'You are about to join us',
-             abstract      : 'Do not read this mail if you are not ready',
-             content       : 'This is your decision to click on this button<br/><a class="button button-block button-positive" href="#/app/login">Connect to the Agency</a>'
-         }).then(function(event) {
-             Eventservices.newMail(event)
-         })
+    Event.findById(1).then(function(event) {
+          Eventservices.newMail(event);
+    })
+  } else {
+    
   }
 //       $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
 //         if (!Util.isAuthenticated()) {

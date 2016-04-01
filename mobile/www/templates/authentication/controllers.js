@@ -1,7 +1,5 @@
 appControllers
-  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, User, AppSettings) {
-
-    $scope.AppSettings = AppSettings;
+  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, User) {
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
@@ -30,6 +28,7 @@ appControllers
             title: 'Success',
             content: 'Your phone is activated!'
           });
+          $rootScope.appSettings.authProvider = provider;
           $scope.activatePhone();
         })
         .catch(function(response) {
@@ -42,11 +41,8 @@ appControllers
     };
 
     $scope.activatePhone = function(){
-      $scope.AppSettings.findOne().then(function(appSettings) {
-        appSettings.phoneActivated = 'true';
-        appSettings.save();
-      });
-      $rootScope.phoneActivated = true;
+        $rootScope.appSettings.phoneActivated = 'true';
+        $rootScope.appSettings.save();
     }
 
     $scope.logout = function() {

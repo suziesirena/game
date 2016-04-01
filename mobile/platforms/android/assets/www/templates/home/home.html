@@ -1,11 +1,11 @@
 
 
-<ion-view title="Home" ng-controller="homeCtrl" style="color:#fff; background-image:url('images/background.jpg');">
+<ion-view title="Home" style="color:#fff; background-image:url('images/background.jpg');">
   <ion-content>
     <div class="row" style="height:25px;"></div>
     <div class="row">
       <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts</div>
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails</div>
+      <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{unreadMails}}</span></div>
       <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages</div>
     </div>
     <div class="row" style="height:25px;"></div>
@@ -24,23 +24,14 @@
     <div class="row">
       <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Agency.png"/><br/>Agency</div>
       <div class="col" ui-sref="app.test" style="text-align:center;"><img width="50" src="images/apps/test.png"/><br/>Test</div>
-      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" /><br/>&nbsp;</div>
+      <div class="col" ui-sref="app.terminal" style="text-align:center;"><img width="50" src="images/apps/terminal.png"/><br/>Terminal</div>
     </div>
-    <div class="row" style="height:25px;"></div>
-    <div class="row">
-        <div class="col">
-            <a href="" ng-click="showListBottomSheet($event)"
-               class="md-raised md-button md-default-theme material-background">List Bottom Sheet</a>
+    <div class="row" style="height:100px;"></div>
 
-            <a href="" ng-click="showGridBottomSheet($event)"
-               class="md-raised md-button md-default-theme material-background">Grid Bottom Sheet</a>
-        </div>
-    </div>
-
-    <div class="bar bar-footer" style="height: 94px;">
+    <div class="bar bar-footer" style="height: 94px; border-top-color:#ffffff;">
       <nav style="width: 100%;">
                 <div class="row">
-                  <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="newMails" class="badge red" style="left:70px;top:10px;right:inherit">{{newMails}}</span></div>
+                  <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="appSettings.unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{appSettings.unreadMails}}</span></div>
                   <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages<span ng-if="newMessages" class="badge red" style="left:155px;top:10px;right:inherit">{{newMessages}}</span></div>
                   <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Phone.png"/><br/>Phone<span ng-if="newCalls" class="badge red" style="left:240px;top:10px;right:inherit">{{newCalls}}</span></div>
                   <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Camera.png"/><br/>Camera<span ng-if="newCamera" class="badge red" style="left:325px;top:10px;right:inherit">{{newCamera}}</span></div>

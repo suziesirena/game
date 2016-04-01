@@ -1,0 +1,10 @@
+<ion-view view-title="Mail">
+    <ion-content>
+                    <img src="images/pnj1.png" style="width: 48px;height: 48px;float: left;">
+                    <h2>{{mail.senderName}}</h2>
+                    <hr>
+                    <p style="font-weight: bold;">{{mail.subject}}</p>
+                    <hr>
+                    <div ng-bind-html="mailContent"></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view title="Contacts">
+
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Search" ng-model="searchKey" autocorrect="off" >
+            <button class="button button-clear" ng-click="clearSearch()">X</button>
+        </label>
+        <button class="button button-clear" ng-click="search()">Search</button>
+    </div>
+
+    <ion-content class="has-header has-subheader">
+        <ion-list>
+            <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar item-button-right" ng-click="navigateTo('app.contractUs')">
+                <img src="img/pnj/{{employee.picture}}"/>
+                {{employee.firstName}} {{employee.lastName}}
+                <p>{{employee.title}}</p>
+                <div class="buttons">
+                    <button class="button button-energized">
+                        <i class="icon ion-ios-telephone"></i>
+                    </button>
+                    <button class="button button-dark">
+                        <i class="icon ion-android-textsms"></i>
+                    </button>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+
+<!-- TODO : liste animée avec ionic-material (dans les headers) mais ne fonctionne pas -->
+        <!-- <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-header">
+            <div class="list animate-fade-slide-in-right">
+                <a href="#/app/profile" class="item item-avatar item-icon-right" ng-repeat="employee in employees">
+                    <img src="img/jon-snow.jpg">
+                    <h2>{{employee.firstName}} {{employee.lastName}}</h2>
+                    <p>{{employee.title}}</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+
+            </div>
+        </div> -->
+
+
+    </ion-content>
+</ion-view>

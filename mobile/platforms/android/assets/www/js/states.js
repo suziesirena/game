@@ -22,7 +22,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       .state('app.home', {
           url: "/home",
           params:{
-              isAnimated:false
+              isAnimated:true
           },
           views: {
               'menuContent': {
@@ -34,7 +34,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       .state('app.facetime', {
           url: "/facetime",
           params:{
-              isAnimated:false
+              isAnimated:true
           },
           views: {
               'menuContent': {
@@ -43,10 +43,34 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
               }
           }
       })
+      .state('app.call', {
+          url: "/call",
+          params:{
+              isAnimated:true
+          },
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/phoneCall/call.html",
+                  controller: 'callCtrl'
+              }
+          }
+      })
+      .state('app.sms', {
+          url: "/sms",
+          params:{
+              isAnimated:true
+          },
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/sms/sms.html",
+                  controller: 'smsCtrl'
+              }
+          }
+      })
       .state('app.contacts', {
           url: "/contacts",
           params:{
-              isAnimated:false
+              isAnimated:true
           },
           views: {
               'menuContent': {
@@ -55,21 +79,22 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
               }
           }
       })
-      // .state('employee', {
-      //     url: '/employees/:employeeId',
-      //     templateUrl: 'templates/contacts/employee-detail.html',
-      //     controller: 'EmployeeDetailCtrl'
-      // })
-      //
-      // .state('reports', {
-      //     url: '/employees/:employeeId/reports',
-      //     templateUrl: 'templates/contacts/employee-reports.html',
-      //     controller: 'EmployeeReportsCtrl'
-      // })
+      .state('app.contact', {
+          url: '/contact',
+          params: {
+              contactdetail: null
+          },
+          views: {
+            'menuContent': {
+                  templateUrl: 'templates/contacts/contact-detail.html',
+                  controller: 'contactDetailCtrl'
+            }
+          }
+      })
       .state('app.chat', {
           url: '/chat',
           params:{
-              isAnimated:false
+              isAnimated:true
           },
           views: {
               'menuContent': {
@@ -78,27 +103,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
               }
           }
       })
-      // .state('app.contractUs', {
-      //     url: "/contractUs",
-      //     views: {
-      //         'menuContent': {
-      //             templateUrl: "templates/contacts/email-message/html/contract-us.html",
-      //             controller: 'contractUsCtrl'
-      //         }
-      //
-      //     }
-      // })
-      // .state('app.defaultUI', {
-      //     url: "/defaultUI",
-      //     cache: false,
-      //     views: {
-      //         'menuContent': {
-      //             templateUrl: "templates/material-user-interface/default-user-interface/html/default-user-interface.html",
-      //             controller: 'defaultUserInterfaceCtrl'
-      //         }
-      //
-      //     }
-      // })
       .state('app.dashboard', {
           url: "/dashboard",
           views: {
@@ -166,7 +170,39 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         views: {
           'menuContent': {
             templateUrl: 'templates/test/test.html',
-            controller: 'testCtrl'            
+            controller: 'testCtrl'
+          }
+        }
+      })
+      .state('app.mails', {
+        url: '/mails',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/mails/mails.html',
+            controller: 'mailsCtrl'
+          }
+        }
+      })
+      .state('app.mail', {
+        url: '/mail',
+        params: {
+            mailDetail: null
+        },
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/mails/mail.html',
+            controller: 'mailCtrl'
+          }
+        }
+      })
+      .state('app.terminal', {
+        url: '/terminal',
+        params: {
+        },
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/terminal/terminal.html',
+            controller: 'terminalCtrl'
           }
         }
       })

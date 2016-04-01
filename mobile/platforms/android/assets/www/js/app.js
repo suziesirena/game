@@ -26,6 +26,7 @@ try {
 } catch (err) { console.error("Error: ", err.message); }
 
 var db = null; //Use for SQLite database.
+
 window.globalVariable = {
     //custom color style variable
     color: {
@@ -55,13 +56,33 @@ window.globalVariable = {
 };// End Global variable
 
 
+
 var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services',
-               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services', 'ionic.contrib.drawer.vertical', ])
+               'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services',
+               'ionic.contrib.drawer.vertical', 'ngData', 'util.services'])
 
 
-    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, RequestsService) {
+    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory,
+                   $state, $mdDialog, $mdBottomSheet, RequestsService, $cordovaMedia,
+                   $ngData, $ionicModal) {
 
+          initDatabase($ngData, $cordovaSQLite);
 
+         $rootScope.closeModal = function(){
+           $state.go('app.login');
+           $rootScope.modal.hide();
+         }
+
+         $rootScope.openModal = function(){
+           $rootScope.modal.show();
+         }
+
+        $ionicModal.fromTemplateUrl('templates/about.html', {
+              scope: $rootScope,
+              animation: 'slide-in-up'
+            }).then(function(modal) {
+              $rootScope.modal = modal;
+            });
 
         function initialRootScope() {
             $rootScope.appPrimaryColor = appPrimaryColor;// Add value of appPrimaryColor to rootScope for use it to base color.
@@ -88,9 +109,9 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
                 StatusBar.styleDefault();
             }
 
-            initialSQLite($cordovaSQLite);
+            //initialSQLite($cordovaSQLite);
             initialRootScope();
-
+            //initEvents();
             //Checking if view is changing it will go to this function.
             $rootScope.$on('$ionicView.beforeEnter', function () {
                 //hide Action Control for android back button.
@@ -104,7 +125,8 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
 
     })
 
-    .config(function ($ionicConfigProvider, $stateProvider, $authProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, $mdIconProvider) {
+    .config(function ($ionicConfigProvider, $stateProvider, $authProvider, $urlRouterProvider, $mdThemingProvider,
+                      $mdIconProvider, $mdColorPalette, $mdIconProvider) {
 
         // Use for change ionic spinner to android pattern.
         $ionicConfigProvider.spinner.icon("android");
@@ -155,4 +177,12 @@ var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPa
     })
     .config(function( $mdGestureProvider ) {
         $mdGestureProvider.skipClickHijack();
+    })
+    .config(function($databaseProvider) {
+
+        $databaseProvider.name = 'anotherlife';
+        $databaseProvider.description = 'anotherlife  database';
+        $databaseProvider.version = '1.0.0';
+        $databaseProvider.size = 4 * 1024 * 1024;
+
     })

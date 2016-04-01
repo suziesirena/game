@@ -1,27 +1,17 @@
 <ion-view title="Contacts">
-
-    <div class="bar bar-subheader item-input-inset">
-        <label class="item-input-wrapper">
-            <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input id="searchKey" type="search" placeholder="Search" ng-model="searchKey" autocorrect="off" >
-            <button class="button button-clear" ng-click="clearSearch()">X</button>
-        </label>
-        <button class="button button-clear" ng-click="search()">Search</button>
-    </div>
-
-    <ion-content class="has-header has-subheader">
+    <ion-content>
         <ion-list>
-            <ion-item ng-repeat="employee in employees" type="item-text-wrap" class="item-avatar item-button-right" ng-click="navigateTo('app.contractUs')">
-                <img src="img/pnj/{{employee.picture}}"/>
-                {{employee.firstName}} {{employee.lastName}}
-                <p>{{employee.title}}</p>
+            <ion-item ng-repeat="contact in contacts" type="item-text-wrap" class="item-avatar item-button-right" ng-click="navigateTo('app.contact', contact);">
+                <img src="img/pnj/{{contact.picture()}}" />
+                {{contact.firstName}} {{contact.lastName}}
+                <p>{{contact.title}}</p>
                 <div class="buttons">
-                    <button class="button button-energized">
+                    <a class="button button-energized" ng-click="navigateTo('app.call', contact); $event.stopPropagation();">
                         <i class="icon ion-ios-telephone"></i>
-                    </button>
-                    <button class="button button-dark">
+                    </a>
+                    <a class="button button-dark"  ng-click="navigateTo('app.sms', contact); $event.stopPropagation();">
                         <i class="icon ion-android-textsms"></i>
-                    </button>
+                    </a>
                 </div>
             </ion-item>
         </ion-list>
@@ -32,10 +22,10 @@
         <!-- <ion-content ng-class="{expanded:isExpanded}">
         <div class="content has-header">
             <div class="list animate-fade-slide-in-right">
-                <a href="#/app/profile" class="item item-avatar item-icon-right" ng-repeat="employee in employees">
+                <a href="#/app/profile" class="item item-avatar item-icon-right" ng-repeat="contact in contacts">
                     <img src="img/jon-snow.jpg">
-                    <h2>{{employee.firstName}} {{employee.lastName}}</h2>
-                    <p>{{employee.title}}</p>
+                    <h2>{{contact.firstName}} {{contact.lastName}}</h2>
+                    <p>{{contact.title}}</p>
                     <i class="icon ion-chatbubble muted"></i>
                 </a>
 

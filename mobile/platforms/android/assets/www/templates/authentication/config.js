@@ -11,7 +11,7 @@ myApp.config(function ($authProvider) {
   };
 
   if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
-    commonConfig.redirectUri = 'http://localhost/';
+    commonConfig.redirectUri = 'http://localhost:8100/';
   }
 
   $authProvider.facebook(angular.extend({}, commonConfig, {

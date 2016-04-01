@@ -71,6 +71,9 @@
         "plugin.google.maps": {
             "API_KEY_FOR_ANDROID": "AIzaSyBUmfAd_vBCZ0jb-56LBN29l6fF0c2kvko",
             "PACKAGE_NAME": "com.ionicframework.game840775"
+        },
+        "com.couchbase.lite.phonegap": {
+            "PACKAGE_NAME": "com.ionicframework.game840775"
         }
     },
     "dependent_plugins": {}

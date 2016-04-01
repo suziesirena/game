@@ -1,6 +1,6 @@
 
 appControllers.controller('AppCtrl',
-                              function($scope, $http, $mdSidenav, $rootScope, $ngData, $cordovaSQLite, AppSettings, Eventservices) {
+                              function($scope, $http, $mdSidenav, $rootScope, $ngData, $state, $auth, AppSettings, Eventservices) {
 
 AppSettings.findOne().then(function(appSettings) {
   if (!appSettings) {
@@ -10,13 +10,34 @@ AppSettings.findOne().then(function(appSettings) {
     }).then(function(appSettings) {
       $rootScope.appSettings    = appSettings;
     });
-    $rootScope.phoneActivated = true;
-    populateData($ngData, Eventservices);
+
+    // $rootScope.phoneActivated = false;
+    populateData($ngData);
 
   } else {
-    $rootScope.appSettings    = appSettings;
-    $rootScope.phoneActivated = (appSettings.phoneActivated == 'true') ? true : false;
-    $rootScope.unreadMails    = appSettings.unreadMails;
+      $rootScope.appSettings    = appSettings;
+      // $rootScope.phoneActivated = (appSettings.phoneActivated == 'true') ? true : false;
+      $rootScope.unreadMails    = appSettings.unreadMails;
+
+      if ($rootScope.appSettings.phoneActivated == 'true' && !$auth.isAuthenticated()) {
+        $state.go('app.login');
+
+      //   $auth.authenticate($rootScope.appSettings.authProvider)
+      //     .then(function(response) {
+      //       $ionicPopup.alert({
+      //         title: 'Success',
+      //         content: 'Your phone is activated!'
+      //       });
+      //       $scope.AppSettings.authProvider = provider;
+      //       $scope.activatePhone();
+      //     })
+      //     .catch(function(response) {
+      //       $ionicPopup.alert({
+      //         title: 'Error',
+      //         content: response.data ? response.data || response.data.message : response
+      //       });
+      // });
+    }
   }
 });
 
