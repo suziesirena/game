@@ -39,7 +39,7 @@ function initDatabase($ngData) {
           subject       : String,
           abstract      : String,
           content       : String,
-          config        : Array
+          config        : String
       },
       methods:{
          triggerDate  : function(){
