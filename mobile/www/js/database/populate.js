@@ -1,6 +1,28 @@
 
 function populateData($ngData){
 
+  $ngData.models['Event'].create({
+            id            : 1,
+            type          : 'mail',
+            senderID      : 1,
+            scheduledTime : 4000,
+            nextEvent     : 2,
+            subject       : 'Your phone is activated',
+            abstract      : 'Wait for instructions',
+            content       : 'Suzie will contact you soon.',
+  });
+
+  $ngData.models['Event'].create({
+            id            : 2,
+            type          : 'sms',
+            senderID      : 2,
+            scheduledTime : 4000,
+            config        : JSON.stringify([
+              [2000, 'Appelez moi dès que tu es prêt'],
+              [4000, 'Appelle moi']
+            ])
+  });
+
   // var EventsList = [
   //   ['mail', 1, 2000, 'Hello, You have been recruited to serve the cause of the agency. Connect to the Agency to activate your phone and wait for instructions.<button class="button button-block button-positive" ng-click="closeModal()">Connect to the Agency</button>']
   // ];
@@ -56,26 +78,7 @@ function populateData($ngData){
     $ngData.models['PNJ'].create(newPNJ);
   }
 
-  $ngData.models['Event'].create({
-            id            : 1,
-            type          : 'mail',
-            senderID      : 1,
-            scheduledTime : 2000,
-            subject       : 'You are about to join us',
-            abstract      : 'Do not read this mail if you are not ready',
-            content       : 'This is your decision to click on this button<br/><a class="button button-block button-positive" href="#/app/login">Connect to the Agency</a>',
-  })
 
-  $ngData.models['Event'].create({
-            id            : 2,
-            type          : 'sms',
-            senderID      : 2,
-            scheduledTime : 2000,
-            config        : JSON.stringify([
-              [2000, 'Appelez moi dès que tu es prêt'],
-              [2000, 'Appelle moi']
-            ])
-  });
 
   console.log('Data pushed to database');
 

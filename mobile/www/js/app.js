@@ -10,20 +10,20 @@
 //
 //Global variable use for setting color, start page, message, oAuth key.
 var wakandaServerURL = 'http://localhost:8082/';
-var nodeServerURL = 'http://localhost:8200';
+var nodeServerURL = 'http://09f50634.ngrok.io/';
 
-try {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'https://raw.githubusercontent.com/suziesirena/game/master/servers.js', false);  // `false` makes the request synchronous
-  request.send(null);
-
-  if (request.status === 200) {
-    console.log(request.responseText);
-    eval(request.responseText);
-  } else {
-    console.log('No access to servers URLs');
-  }
-} catch (err) { console.error("Error: ", err.message); }
+// try {
+//   var request = new XMLHttpRequest();
+//   request.open('GET', 'https://raw.githubusercontent.com/suziesirena/game/master/servers.js', false);  // `false` makes the request synchronous
+//   request.send(null);
+//
+//   if (request.status === 200) {
+//     console.log(request.responseText);
+//     eval(request.responseText);
+//   } else {
+//     console.log('No access to servers URLs');
+//   }
+// } catch (err) { console.error("Error: ", err.message); }
 
 var db = null; //Use for SQLite database.
 

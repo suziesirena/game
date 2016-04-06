@@ -1,7 +1,7 @@
 // Controller of menu toggle.
 // Learn more about Sidenav directive of angular material
 // https://material.angularjs.org/latest/#/demo/material.components.sidenav
-appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, $ionicPlatform, $mdDialog, $mdBottomSheet, $mdMenu, $mdSelect, $cordovaSQLite) {
+appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, $ionicPlatform, $mdDialog, $mdBottomSheet, $mdMenu, $mdSelect, $auth, $cordovaSQLite) {
 
     $scope.resetApplication = function () {
       db = window.cordova ? $cordovaSQLite.openDB("anotherlife") : window.openDatabase("anotherlife", "1.0.0", "AnotherLifeDB", -1);
@@ -14,9 +14,9 @@ appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $time
         tx.executeSql("DROP TABLE IF EXISTS user");
         tx.executeSql("DROP TABLE IF EXISTS scenario");
         tx.executeSql("DROP TABLE IF EXISTS mail");
-
       });
 
+      $auth.logout();
       $rootScope.unreadMails=0;
 
     };

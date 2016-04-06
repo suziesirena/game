@@ -1,5 +1,5 @@
 appControllers
-  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, User) {
+  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, Eventservices, Event, User) {
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
@@ -34,7 +34,7 @@ appControllers
         .catch(function(response) {
           $ionicPopup.alert({
             title: 'Error',
-            content: response.data ? response.data || response.data.message : response
+            content: response.data ? response.data || response.data.message : JSON.stringify(response)
           });
 
         });
@@ -43,6 +43,9 @@ appControllers
     $scope.activatePhone = function(){
         $rootScope.appSettings.phoneActivated = 'true';
         $rootScope.appSettings.save();
+        Event.findById(1).then(function(event) {
+              Eventservices.launch(event);
+        })
     }
 
     $scope.logout = function() {

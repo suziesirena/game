@@ -1035,7 +1035,7 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
 var usernames = {};
 
 // TODO : find server adress automatically
-var nodeServerURL = 'http://01d77459.ngrok.io/';
+var nodeServerURL = 'http://09f50634.ngrok.io/';
 
 io.on('connection', function (socket) {
   var addedUser = false;
@@ -1074,7 +1074,8 @@ io.on('connection', function (socket) {
   // when the client emits 'stop typing', we broadcast it to others
   socket.on('stop typing', function () {
     socket.broadcast.emit('stop typing', {
-      username: socket.username
+      username: socket.username,
+      face: nodeServerURL + 'images/pnj1.png'
     });
   });
 

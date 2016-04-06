@@ -1583,7 +1583,8 @@ md-sidenav {
         font-weight: 500;
         font-size: 11px;
         width: 40px;
-        text-align: center; }
+        text-align: center;
+      }
 
 #location-feed-content {
   padding: 10px 10px 10px 8px;

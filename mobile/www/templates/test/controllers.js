@@ -1,8 +1,13 @@
-appControllers.controller('testCtrl', ['$rootScope', '$scope', '$mdToast', '$ionicModal', 'sound', '$ngData', '$cordovaSQLite', 'Eventservices', 'User', 'PNJ',
-function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, Eventservices, User, PNJ) {
+appControllers.controller('testCtrl',
+function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, db, Eventservices, User, PNJ) {
+
+  $scope.var1 = PNJ;
 
   $scope.test1 = function () {
-    //Eventservices.newMail(event)
+
+    // a = db.findOneExtend('Event', {id : 1}, ['nextEvent']);
+    // console.log(a)
+
   };
 
   $scope.test2 = function () {
@@ -83,4 +88,4 @@ $scope.populateData = function () {
   // $scope.index();
 
 
-}]);
+});

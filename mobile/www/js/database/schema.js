@@ -36,6 +36,7 @@ function initDatabase($ngData) {
           type          : String,
           senderID      : Number,
           scheduledTime : Number,
+          nextEvent     : String,
           subject       : String,
           abstract      : String,
           content       : String,
@@ -71,6 +72,19 @@ function initDatabase($ngData) {
        senderId         : Number,
        subject          : String,
        abstract         : String,
+       content          : String,
+       createDate       : Number,
+       read             : String,
+       answered         : String
+     }
+  });
+
+  $ngData.model('SMS', {
+    tableName: 'sms',
+    properties: {
+       senderName       : String,
+       senderId         : Number,
+       subject          : String,
        content          : String,
        createDate       : Number,
        read             : String,

@@ -5,8 +5,9 @@ appControllers.controller('AppCtrl',
 AppSettings.findOne().then(function(appSettings) {
   if (!appSettings) {
     AppSettings.create({
-      phoneActivated : 'false',
-      unreadMails    : 0
+      authProvider    : '',
+      phoneActivated  : 'false',
+      unreadMails     : 0
     }).then(function(appSettings) {
       $rootScope.appSettings    = appSettings;
     });
@@ -16,7 +17,6 @@ AppSettings.findOne().then(function(appSettings) {
 
   } else {
       $rootScope.appSettings    = appSettings;
-      // $rootScope.phoneActivated = (appSettings.phoneActivated == 'true') ? true : false;
       $rootScope.unreadMails    = appSettings.unreadMails;
 
       if ($rootScope.appSettings.phoneActivated == 'true' && !$auth.isAuthenticated()) {
