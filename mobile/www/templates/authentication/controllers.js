@@ -1,5 +1,5 @@
 appControllers
-  .controller('LoginCtrl', function($rootScope, $scope, $ionicPopup, $auth, Eventservices, Event, User) {
+  .controller('LoginCtrl', function($rootScope, $scope, $mdToast, $ionicPopup, $auth, Eventservices, Event, User) {
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
@@ -23,11 +23,21 @@ appControllers
           //   .catch(function(error) {
           //       console.log(error.message);
           //   });
-          //
-          $ionicPopup.alert({
-            title: 'Success',
-            content: 'Your phone is activated!'
+          $mdToast.show({
+            controller: 'toastController',
+            templateUrl: 'toast.html',
+            hideDelay: 3000,
+            position: 'top',
+            locals: {
+              displayOption: {
+                title: 'Your phone is activated!'
+              }
+            }
           });
+          // $ionicPopup.alert({
+          //   title: 'Success',
+          //   content: 'Your phone is activated!'
+          // });
           $rootScope.appSettings.authProvider = provider;
           $scope.activatePhone();
         })
@@ -40,12 +50,12 @@ appControllers
         });
     };
 
-    $scope.activatePhone = function(){
-        $rootScope.appSettings.phoneActivated = 'true';
-        $rootScope.appSettings.save();
-        Event.findById(1).then(function(event) {
-              Eventservices.launch(event);
-        })
+    $scope.activatePhone = function() {
+      $rootScope.appSettings.phoneActivated = 'true';
+      $rootScope.appSettings.save();
+      Event.findById(1).then(function(event) {
+        Eventservices.launch(event);
+      })
     }
 
     $scope.logout = function() {
