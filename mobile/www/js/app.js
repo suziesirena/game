@@ -10,7 +10,7 @@
 //
 //Global variable use for setting color, start page, message, oAuth key.
 var wakandaServerURL = 'http://localhost:8082/';
-var nodeServerURL = 'http://09f50634.ngrok.io/';
+var nodeServerURL = 'http://ace97069.ngrok.io/';
 
 // try {
 //   var request = new XMLHttpRequest();
@@ -59,7 +59,7 @@ window.globalVariable = {
 
 var myApp = angular.module('starter', ['ionic', 'satellizer', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services',
                'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'btford.socket-io', 'chat.services',
-               'ionic.contrib.drawer.vertical', 'ngData', 'util.services'])
+               'ionic.contrib.drawer.vertical', 'ngData', 'util.services', 'angularMoment'])
 
 
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory,

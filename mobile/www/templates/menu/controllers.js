@@ -14,6 +14,8 @@ appControllers.controller('menuCtrl', function ($scope, $http, $rootScope, $time
         tx.executeSql("DROP TABLE IF EXISTS user");
         tx.executeSql("DROP TABLE IF EXISTS scenario");
         tx.executeSql("DROP TABLE IF EXISTS mail");
+        tx.executeSql("DROP TABLE IF EXISTS sms");
+        tx.executeSql("DROP TABLE IF EXISTS toto");                
       });
 
       $auth.logout();

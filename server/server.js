@@ -1035,7 +1035,7 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
 var usernames = {};
 
 // TODO : find server adress automatically
-var nodeServerURL = 'http://09f50634.ngrok.io/';
+var nodeServerURL = 'http://ace97069.ngrok.io/';
 
 io.on('connection', function (socket) {
   var addedUser = false;

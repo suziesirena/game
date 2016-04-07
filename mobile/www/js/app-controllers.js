@@ -7,7 +7,9 @@ AppSettings.findOne().then(function(appSettings) {
     AppSettings.create({
       authProvider    : '',
       phoneActivated  : 'false',
-      unreadMails     : 0
+      init            : 'false',
+      unreadMails     : 0,
+      unreadSMS       : 0      
     }).then(function(appSettings) {
       $rootScope.appSettings    = appSettings;
     });

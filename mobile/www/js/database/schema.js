@@ -5,8 +5,10 @@ function initDatabase($ngData) {
       tableName: 'settings',
       properties: {
           phoneActivated  : Boolean,
+          init            : Boolean,
           authProvider    : String,
-          unreadMails     : Number
+          unreadMails     : Number,
+          unreadSMS       : Number
       }
   });
 
@@ -79,12 +81,12 @@ function initDatabase($ngData) {
      }
   });
 
+
   $ngData.model('SMS', {
     tableName: 'sms',
     properties: {
        senderName       : String,
        senderId         : Number,
-       subject          : String,
        content          : String,
        createDate       : Number,
        read             : String,

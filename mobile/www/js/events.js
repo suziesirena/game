@@ -1,58 +1,74 @@
-appServices.service('Eventservices', function($rootScope, Event, Mail, PNJ, Action, sound, AppSettings) {
+appServices.service('Eventservices', function($rootScope,  Event, Mail, PNJ, SMS, sound, AppSettings) {
+
+
+  var service = this;
+
 
   this.launch = function(event){
-
     if (event.nextEvent) {
       Event.findById(event.nextEvent).then(function(event){
-        this.launch(event);
-      });
+        service.launch(event);
+      }, service);
     }
 
     switch (event.type) {
         case 'mail':
-            this.newMail(event);
+            this.sendMail(event);
+        break;
+        case 'sms':
+            this.sendSMS(event);
         break;
     }
 
   }
 
-  this.newSMS = function(event){
+  this.sendSMS = function(event){
 
-    setTimeout(function(event){
+      setTimeout(function(event){
+        PNJ.findById(event.senderID).then(function(pnj){
 
-          for (var i=0 ; i<event.config ; i++) {
-                setTimeout(function(event){
-                  PNJ.findById(event.senderID).then(function(pnj){
-                      SMS.create([{
-                           senderID       : event.senderID,
-                           senderName     : pnj.firstName + ' ' + pnj.lastName,
-                           content        : event.config[1],
-                           createDate     : Date.now(),
-                           read           : 'notread',
-                           answered       : ''
-                      }])
-                      .then(function(sms) {
-                          console.log('sms inserted : ' + JSON.stringify(sms));
-                          $rootScope.appSettings.unreadSMS ++;
-                          $rootScope.appSettings.save().then(function(results) {
-                              console.log(results);
-                          }).catch(function(error) {
-                              console.log(error);
-                          });
-                          sound.notification();
-                      })
-                      .catch(function(error) {
-                          console.log(error.message);
+           event.pnj = pnj;
+           event.config = JSON.parse(event.config);
+
+            for (var i=0 ; i<= event.config.length-1 ; i++) {
+                  setTimeout(function(event, indexMessage){
+                    SMS.create([{
+                         senderID       : event.senderID,
+                         senderName     : event.pnj.firstName + ' ' + event.pnj.lastName,
+                         content        : event.config[indexMessage][1],
+                         createDate     : Date.now(),
+                         read           : 'notread',
+                         answered       : ''
+                    }]).then(function(sms){
+                      console.log('sms inserted : ' + JSON.stringify(sms));
+                      $rootScope.appSettings.unreadSMS ++;
+                      $rootScope.appSettings.save().then(function(results) {
+                          console.log(results);
+                      }).catch(function(error) {
+                          console.log('appSettings update : ' + error.message);
                       });
-                  })
-                }, event.scheduledTime, event.config[0]);
-          }
+                      sound.notification();
+                    })
+                    .catch(function(error) {
+                        console.log('SMS creation : ' + error.message);
+                    });
 
-    }, event.scheduledTime, event);
+                  }, event.config[i][0], event, i);
+            }
+
+
+        })
+        .catch(function(error) {
+            console.log(error.message);
+        });
+
+
+      }, event.scheduledTime, event);
+
 
   }
 
-  this.newMail = function(event){
+  this.sendMail = function(event){
     setTimeout(function(event){
       PNJ.findById(event.senderID).then(function(pnj){
           Mail.create([{
@@ -93,4 +109,47 @@ appServices.service('Eventservices', function($rootScope, Event, Mail, PNJ, Acti
 
   }
 
-});
+})
+
+// .service('SMSservice', function($rootScope, PNJ, $ngData, sound) {
+//
+//   var service = {};
+//
+//   this.send = function(event){
+//
+//     setTimeout(function(event){
+//
+//           for (var i=0 ; i<event.config ; i++) {
+//                 setTimeout(function(event){
+//                   PNJ.findById(event.senderID).then(function(pnj){
+//                       $ngData.model('SMS').create([{
+//                            senderID       : event.senderID,
+//                            senderName     : pnj.firstName + ' ' + pnj.lastName,
+//                            content        : event.config[1],
+//                            createDate     : Date.now(),
+//                            read           : 'notread',
+//                            answered       : ''
+//                       }])
+//                       .then(function(sms) {
+//                           console.log('sms inserted : ' + JSON.stringify(sms));
+//                           $rootScope.appSettings.unreadSMS ++;
+//                           $rootScope.appSettings.save().then(function(results) {
+//                               console.log(results);
+//                           }).catch(function(error) {
+//                               console.log(error);
+//                           });
+//                           sound.notification();
+//                       })
+//                       .catch(function(error) {
+//                           console.log(error.message);
+//                       });
+//                   })
+//                 }, event.scheduledTime, event.config[0]);
+//           }
+//
+//     }, event.scheduledTime, event);
+//
+//   }
+//
+//   //return service;
+// })

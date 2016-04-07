@@ -1,14 +1,18 @@
 
 function initialSQLite($cordovaSQLite) {
 
-  db = window.cordova ? $cordovaSQLite.openDB("anotherlife") : window.openDatabase("anotherlife", "1.0.0", "AnotherLifeDB", -1);
-
-  db.transaction(function(tx) {
-    tx.executeSql("DROP TABLE IF EXISTS mail");
-    tx.executeSql("DROP TABLE IF EXISTS user");
-    tx.executeSql("DROP TABLE IF EXISTS scenario");
-    tx.executeSql("DROP TABLE IF EXISTS event");
-  });
+  // db = window.cordova ? $cordovaSQLite.openDB("anotherlife") : window.openDatabase("anotherlife", "1.0.0", "AnotherLifeDB", -1);
+  //
+  // db.transaction(function(tx) {
+  //   tx.executeSql("DROP TABLE IF EXISTS mail");
+  //   tx.executeSql("DROP TABLE IF EXISTS user");
+  //   tx.executeSql("DROP TABLE IF EXISTS scenario");
+  //   tx.executeSql("DROP TABLE IF EXISTS event");
+  //   tx.executeSql("DROP TABLE IF EXISTS sms");
+  //   tx.executeSql("DROP TABLE IF EXISTS toto");
+  //
+  //
+  // });
   //
   // $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS mails " +
   // "( id           integer primary key   , " +

@@ -1,12 +1,13 @@
 appControllers.controller('testCtrl',
-function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, db, Eventservices, User, PNJ) {
+function ($rootScope, $scope, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, db, Eventservices, User, PNJ, Event) {
 
   $scope.var1 = PNJ;
 
   $scope.test1 = function () {
 
-    // a = db.findOneExtend('Event', {id : 1}, ['nextEvent']);
-    // console.log(a)
+    Event.findById(1).then(function(event) {
+          Eventservices.launch(event);
+    })
 
   };
 
