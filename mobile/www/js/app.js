@@ -10,7 +10,7 @@
 //
 //Global variable use for setting color, start page, message, oAuth key.
 var wakandaServerURL = 'http://localhost:8082/';
-var nodeServerURL = 'http://ace97069.ngrok.io/';
+var nodeServerURL = 'http://b66838b4.ngrok.io/';
 
 // try {
 //   var request = new XMLHttpRequest();
