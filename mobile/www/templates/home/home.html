@@ -32,7 +32,7 @@
       <nav style="width: 100%;">
                 <div class="row">
                   <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="appSettings.unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{appSettings.unreadMails}}</span></div>
-                  <div class="col" ui-sref="app.sms" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages<span ng-if="appSettings.unreadSMS" class="badge red" style="left:155px;top:10px;right:inherit">{{appSettings.unreadSMS}}</span></div>
+                  <div class="col" ui-sref="app.UserMessages" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages<span ng-if="appSettings.unreadSMS" class="badge red" style="left:155px;top:10px;right:inherit">{{appSettings.unreadSMS}}</span></div>
                   <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Phone.png"/><br/>Phone<span ng-if="newCalls" class="badge red" style="left:240px;top:10px;right:inherit">{{newCalls}}</span></div>
                   <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Camera.png"/><br/>Camera<span ng-if="newCamera" class="badge red" style="left:325px;top:10px;right:inherit">{{newCamera}}</span></div>
                 </div>

@@ -82,7 +82,7 @@ angular.module('starter')
       // })
       SMS.find().then(function(data) {
         $scope.doneLoading = true;
-        $scope.messages = data.messages;
+        $scope.messages = data;
 
         $timeout(function() {
           viewScroll.scrollBottom();
