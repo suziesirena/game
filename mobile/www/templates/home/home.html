@@ -1,42 +1,56 @@
-
-
 <ion-view title="Home" style="color:#fff; background-image:url('images/background.jpg');">
-  <ion-content>
-    <div class="row" style="height:25px;"></div>
-    <div class="row">
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png"/><br/>Contacts</div>
-      <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{unreadMails}}</span></div>
-      <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Chat.png"/><br/>Chat</div>
-    </div>
-    <div class="row" style="height:25px;"></div>
-    <div class="row">
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Memo.png"/><br/>Memo</div>
-      <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Phone.png"/><br/>Phone</div>
-      <div class="col" ui-sref="app.video" style="text-align:center;"><img width="50" src="images/apps/Camera.png"/><br/>Camera</div>
-    </div>
-    <div class="row" style="height:25px;"></div>
-    <div class="row">
-      <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Maps-icon.png"/><br/>Maps</div>
-      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" src="images/apps/Settings.png"/><br/>Settings</div>
-      <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" src="images/apps/Banque.png"/><br/>Banque</div>
-    </div>
-    <div class="row" style="height:25px;"></div>
-    <div class="row">
-      <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Agency.png"/><br/>Agency</div>
-      <div class="col" ui-sref="app.test" style="text-align:center;"><img width="50" src="images/apps/test.png"/><br/>Test</div>
-      <div class="col" ui-sref="app.terminal" style="text-align:center;"><img width="50" src="images/apps/terminal.png"/><br/>Terminal</div>
-    </div>
-    <div class="row" style="height:100px;"></div>
+    <ion-content>
+        <div class="row" style="height:25px;"></div>
+        <div class="row">
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Contacts.png" />
+                <br/>Contacts</div>
+            <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png" />
+                <br/>Mails<span ng-if="unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{unreadMails}}</span></div>
+            <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Chat.png" />
+                <br/>Chat</div>
+        </div>
+        <div class="row" style="height:25px;"></div>
+        <div class="row">
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Memo.png" />
+                <br/>Memo</div>
+            <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Phone.png" />
+                <br/>Phone</div>
+            <div class="col" ui-sref="app.video" style="text-align:center;"><img width="50" src="images/apps/Camera.png" />
+                <br/>Camera</div>
+        </div>
+        <div class="row" style="height:25px;"></div>
+        <div class="row">
+            <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Maps-icon.png" />
+                <br/>Maps</div>
+            <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" src="images/apps/Settings.png" />
+                <br/>Settings</div>
+            <div class="col" ui-sref="app.login" style="text-align:center;"><img width="50" src="images/apps/Banque.png" />
+                <br/>Banque</div>
+        </div>
+        <div class="row" style="height:25px;"></div>
+        <div class="row">
+            <div class="col" ui-sref="app.map" style="text-align:center;"><img width="50" src="images/apps/Agency.png" />
+                <br/>Agency</div>
+            <div class="col" ui-sref="app.test" style="text-align:center;"><img width="50" src="images/apps/test.png" />
+                <br/>Test</div>
+            <div class="col" ui-sref="app.terminal" style="text-align:center;"><img width="50" src="images/apps/terminal.png" />
+                <br/>Terminal</div>
+        </div>
+        <div class="row" style="height:100px;"></div>
 
-    <div class="bar bar-footer" style="height: 94px; border-top-color:#ffffff;">
-      <nav style="width: 100%;">
+        <div class="bar bar-footer" style="height: 94px; border-top-color:#ffffff;">
+            <nav style="width: 100%;">
                 <div class="row">
-                  <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png"/><br/>Mails<span ng-if="appSettings.unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{appSettings.unreadMails}}</span></div>
-                  <div class="col" ui-sref="app.UserMessages" style="text-align:center;"><img width="50" src="images/apps/Messages.png"/><br/>Messages<span ng-if="appSettings.unreadSMS" class="badge red" style="left:155px;top:10px;right:inherit">{{appSettings.unreadSMS}}</span></div>
-                  <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Phone.png"/><br/>Phone<span ng-if="newCalls" class="badge red" style="left:240px;top:10px;right:inherit">{{newCalls}}</span></div>
-                  <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Camera.png"/><br/>Camera<span ng-if="newCamera" class="badge red" style="left:325px;top:10px;right:inherit">{{newCamera}}</span></div>
+                    <div class="col" ui-sref="app.mails" style="text-align:center;"><img width="50" src="images/apps/E-mail.png" />
+                        <br/>Mails<span ng-if="appSettings.unreadMails" class="badge red" style="left:70px;top:10px;right:inherit">{{appSettings.unreadMails}}</span></div>
+                    <div class="col" ui-sref="app.message" style="text-align:center;"><img width="50" src="images/apps/Messages.png" />
+                        <br/>Messages<span ng-if="appSettings.unreadSMS" class="badge red" style="left:155px;top:10px;right:inherit">{{appSettings.unreadSMS}}</span></div>
+                    <div class="col" ui-sref="app.chat" style="text-align:center;"><img width="50" src="images/apps/Phone.png" />
+                        <br/>Phone<span ng-if="newCalls" class="badge red" style="left:240px;top:10px;right:inherit">{{newCalls}}</span></div>
+                    <div class="col" ui-sref="app.contacts" style="text-align:center;"><img width="50" src="images/apps/Camera.png" />
+                        <br/>Camera<span ng-if="newCamera" class="badge red" style="left:325px;top:10px;right:inherit">{{newCamera}}</span></div>
                 </div>
-      </nav>
-     </div>
-</ion-content>
+            </nav>
+        </div>
+    </ion-content>
 </ion-view>
