@@ -1,5 +1,5 @@
 appControllers.controller('testCtrl',
-	function($rootScope, $scope, $state, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, db, Eventservices, User, PNJ, Event) {
+	function($rootScope, $scope, $state, $mdToast, $ionicModal, sound, $ngData, $cordovaSQLite, db, Eventservices, User, PNJ, Event, SMS) {
 
 		$scope.var1 = PNJ;
 
@@ -12,7 +12,12 @@ appControllers.controller('testCtrl',
 		};
 
 		$scope.test2 = function() {
-			$state.go('app.messages')
+			a = SMS.count({
+				senderID: 2,
+				read: 'unread'
+			}).then(function(result) {
+				console.log(result.count);
+			})
 		};
 
 		$scope.test3 = function() {}

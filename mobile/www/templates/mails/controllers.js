@@ -20,19 +20,29 @@ appControllers
 			});
 		};
 	})
-	.controller('mailCtrl', function($rootScope, $scope, $stateParams, $state, $sce) {
+	.controller('mailCtrl', function($rootScope, $scope, $stateParams, $state, $sce, Eventservices, Event) {
 
 		// $scope.$on('$state.beforeEnter', function() {
-		if ($stateParams.data) {
-			$scope.mail = $stateParams.data;
-			if ($stateParams.data.read != 'read') {
+		var mail = $stateParams.data;
+		if (mail) {
+			$scope.mail = mail;
+			if (mail.read != 'read') {
 				$rootScope.appSettings.unreadMails--;
 				$rootScope.appSettings.save();
+
+				if (mail.nextEventID) {
+					Event.findOne({
+						id: mail.nextEventID
+					}).then(function(event) {
+						Eventservices.launch(event);
+					})
+				}
+
 				$scope.mail.read = 'read';
 				$scope.mail.save();
 			}
 
-			$scope.mailContent = $sce.trustAsHtml($stateParams.data.content);
+			$scope.mailContent = $sce.trustAsHtml(mail.content);
 
 		} else {
 			$state.go('app.mails');

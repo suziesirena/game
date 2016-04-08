@@ -1,14 +1,14 @@
-appServices.service('Eventservices', function($rootScope, $mdToast, $state, Event, Mail, PNJ, SMS, sound, AppSettings) {
-
+appServices.service('Eventservices', function($rootScope, $mdToast, $state, Event, Mail, PNJ, SMS, Action, sound, AppSettings) {
 
 	var service = this;
 
-
 	this.launch = function(event) {
-		if (event.nextEvent) {
-			Event.findById(event.nextEvent).then(function(event) {
+
+		if (event.nextEventID && !event.conditions) {
+
+			Event.findById(event.nextEventID).then(function(event) {
 				service.launch(event);
-			}, service);
+			});
 		}
 
 		switch (event.type) {
@@ -32,14 +32,15 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 
 					for (var i = 0; i <= event.config.length - 1; i++)  {
 						setTimeout(function(event, indexMessage) {
-							SMS.create([{
+
+							SMS.create({
 									senderID: event.senderID,
 									senderName: event.pnj.firstName + ' ' + event.pnj.lastName,
 									content: event.config[indexMessage][1],
 									createDate: Date.now(),
-									read: 'notread',
+									read: 'unread',
 									answered: ''
-								}]).then(function(sms) {
+								}).then(function(sms) {
 									console.log('sms inserted : ' + JSON.stringify(sms));
 
 									if ($state.current.name != 'app.home') {
@@ -50,7 +51,7 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 											position: 'top',
 											locals: {
 												displayOption: {
-													title: sms[0].senderName + " has sent you a message :<br/>" + sms[0].content
+													title: sms.senderName + " has sent you a message :<br/>" + sms.content
 												}
 											}
 										});
@@ -67,34 +68,36 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 								.catch(function(error) {
 									console.log('SMS creation : ' + error.message);
 								});
-
 						}, event.config[i][0], event, i);
 					}
-
 				})
 				.catch(function(error) {
 					console.log(error.message);
 				});
-
-
 		}, event.scheduledTime, event);
-
-
 	}
 
 	this.sendMail = function(event) {
+
 		setTimeout(function(event) {
 			PNJ.findById(event.senderID).then(function(pnj) {
-				Mail.create([{
-						senderID: event.senderID,
-						senderName: pnj.firstName + ' ' + pnj.lastName,
-						subject: event.subject,
-						abstract: event.abstract,
-						content: event.content,
-						createDate: Date.now(),
-						read: 'notread',
-						answered: ''
-					}])
+
+				var newMail = {
+					senderID: event.senderID,
+					senderName: pnj.firstName + ' ' + pnj.lastName,
+					subject: event.subject,
+					abstract: event.abstract,
+					content: event.content,
+					createDate: Date.now(),
+					read: 'unread',
+					answered: ''
+				}
+
+				if (event.conditions != '') {
+					newMail.nextEventID = event.nextEventID;
+				}
+
+				Mail.create(newMail)
 					.then(function(mail) {
 						console.log('Mail inserted : ' + JSON.stringify(mail));
 						if ($state.current.name != 'app.home') {
@@ -105,7 +108,7 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 								position: 'top',
 								locals: {
 									displayOption: {
-										title: mail[0].senderName + " has sent you a mail :<br/>" + mail[0].subject
+										title: mail.senderName + " has sent you a mail :<br/>" + mail.subject
 									}
 								}
 							});
@@ -118,16 +121,8 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 							console.log(error);
 						});
 
-						// Action.create({
-						//     type          : String,
-						//     beginTime     : Number,
-						//     EndTime       : Number,
-						//     completed     : String,
-						//     config        : Object
-						// });
-
 						sound.notification();
-					})
+					}, event)
 					.catch(function(error) {
 						console.log(error.message);
 					});

@@ -37,22 +37,16 @@ function initDatabase($ngData) {
 			type: String,
 			senderID: Number,
 			scheduledTime: Number,
-			nextEvent: String,
+			nextEventID: String,
 			subject: String,
 			abstract: String,
 			content: String,
-			config: String
+			config: Object,
+			conditions: Object
 		},
 		methods: {
 			triggerDate: function() {
 				return Date.now() + this.scheduledTime;
-			},
-		},
-		statics: {
-			senderName: function(pnj, id) {
-				return pnj.findOne({
-					id
-				});
 			}
 		}
 	});
@@ -77,6 +71,7 @@ function initDatabase($ngData) {
 			abstract: String,
 			content: String,
 			createDate: Number,
+			nextEventID: Number,
 			read: String,
 			answered: String
 		}

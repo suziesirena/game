@@ -13,7 +13,7 @@ angular.module('starter')
 						if (messages.length > 0) {
 							$scope.messages.push(messages[0]);
 						}
-					})
+					});
 				});
 			});
 		})
@@ -101,6 +101,25 @@ angular.module('starter')
 				// MockService.getUserMessages({
 				//   toUserId: $scope.toUser._id
 				// })
+				SMS.count({
+					senderID: $scope.toUser._id,
+					read: 'unread'
+				}).then(function(result) {
+					console.log(result.count + ' sms unread');
+					$rootScope.appSettings.unreadSMS -= result.count;
+					$rootScope.appSettings.save();
+				});
+
+				SMS.find({
+					senderID: $scope.toUser._id,
+					read: 'unread'
+				}).then(function(unreadSMS) {
+					unreadSMS.forEach(function(sms) {
+						sms.read = 'read';
+						sms.save();
+					});
+				});
+
 				SMS.find({
 					senderID: $scope.toUser._id
 				}).then(function(data) {
@@ -111,6 +130,8 @@ angular.module('starter')
 						viewScroll.scrollBottom();
 					}, 0);
 				});
+
+
 			}
 
 			$scope.$watch('input.message', function(newValue, oldValue) {
