@@ -22,22 +22,6 @@ appControllers.controller('AppCtrl',
 
 				if ($rootScope.appSettings.phoneActivated == 'true' && !$auth.isAuthenticated()) {
 					$state.go('app.login');
-
-					//   $auth.authenticate($rootScope.appSettings.authProvider)
-					//     .then(function(response) {
-					//       $ionicPopup.alert({
-					//         title: 'Success',
-					//         content: 'Your phone is activated!'
-					//       });
-					//       $scope.AppSettings.authProvider = provider;
-					//       $scope.activatePhone();
-					//     })
-					//     .catch(function(response) {
-					//       $ionicPopup.alert({
-					//         title: 'Error',
-					//         content: response.data ? response.data || response.data.message : response
-					//       });
-					// });
 				} else if ($rootScope.appSettings.phoneActivated == 'true' && $auth.isAuthenticated()) {
 					User.findOne().then(function(user) {
 						$rootScope.user = user;

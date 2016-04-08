@@ -1,24 +1,62 @@
 angular.module('starter')
-	.controller('UserMessagesCtrl',
-		function($scope, $rootScope, $state, $stateParams, MockService, $ionicActionSheet, $ionicPopup, $ionicScrollDelegate, $timeout, $interval, SMS) {
+	.controller('MessagesCtrl', function($scope, $rootScope, $state, $stateParams, PNJ, SMS) {
 
-			// mock acquiring data via $stateParams
-			$scope.toUser = {
-				_id: '534b8e5aaa5e7afc1b23e69b',
-				picture: 'http://ionicframework.com/img/docs/venkman.jpg',
-				username: 'Venkman'
+		$scope.$on('$ionicView.enter', function() {
+			$scope.messages = [];
+			PNJ.find().then(function(pnjs) {
+				pnjs.forEach(function(pnj) {
+					SMS.find({
+						senderID: pnj.id
+					}).sort({
+						id: 'desc'
+					}).then(function(messages) {
+						if (messages.length > 0) {
+							$scope.messages.push(messages[0]);
+						}
+					})
+				});
+			});
+		})
+
+		$scope.navigateTo = function(targetPage, objectData) {
+			$state.go(targetPage, {
+				data: objectData
+			});
+		};
+
+	})
+	.controller('UserMessagesCtrl',
+		function($scope, $rootScope, $state, $stateParams, MockService, $ionicActionSheet, $ionicPopup, $ionicScrollDelegate, $timeout, $interval, User, SMS) {
+
+			if ($stateParams.data) {
+				$scope.toUser = {
+					_id: $stateParams.data.senderID,
+					username: $stateParams.data.senderName
+				}
+				$scope.input = {
+					message: localStorage['userMessage-' + $scope.toUser._id] || ''
+				};
+			} else {
+				$state.go('app.messages');
 			}
 
-			// this could be on $rootScope rather than in $stateParams
-			$scope.user = {
-				_id: $rootScope.user.serverID,
-				picture: $rootScope.user.picture,
-				displayName: $rootScope.user.displayName
-			};
+			if ($rootScope.user) {
+				$scope.user = {
+					_id: $rootScope.user.serverID,
+					picture: $rootScope.user.picture,
+					displayName: $rootScope.user.displayName
+				};
+			} else {
+				User.findOne().then(function(user) {
+					$rootScope.user = user;
+					$scope.user = {
+						_id: $rootScope.user.serverID,
+						picture: $rootScope.user.picture,
+						displayName: $rootScope.user.displayName
+					};
+				});
+			}
 
-			$scope.input = {
-				message: localStorage['userMessage-' + $scope.toUser._id] || ''
-			};
 
 			var messageCheckTimer;
 
@@ -63,7 +101,9 @@ angular.module('starter')
 				// MockService.getUserMessages({
 				//   toUserId: $scope.toUser._id
 				// })
-				SMS.find().then(function(data) {
+				SMS.find({
+					senderID: $scope.toUser._id
+				}).then(function(data) {
 					$scope.doneLoading = true;
 					$scope.messages = data;
 

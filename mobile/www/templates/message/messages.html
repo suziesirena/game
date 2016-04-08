@@ -1,0 +1,14 @@
+<ion-view view-title="Messages">
+    <ion-content>
+        <div class="list">
+            <div ng-repeat="message in messages">
+                <a class="item item-avatar" ng-click="navigateTo('app.message', message)">
+                    <img src="img/pnj/pnj{{message.senderID}}.jpg">
+                    <h2>{{message.senderName}}</h2>
+                    <p style="white-space: initial;" class="{{message.read}}" ng-bind-html="message.content"></p>
+                    </hr>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

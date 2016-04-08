@@ -87,7 +87,7 @@ function initDatabase($ngData) {
 		tableName: 'sms',
 		properties: {
 			senderName: String,
-			senderId: Number,
+			senderID: Number,
 			content: String,
 			createDate: Number,
 			read: String,

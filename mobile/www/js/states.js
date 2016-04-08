@@ -67,10 +67,22 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 		// 		}
 		// 	}
 		// })
+		.state('app.messages', {
+			url: "/messages",
+			params: {
+				isAnimated: true
+			},
+			views: {
+				'menuContent': {
+					templateUrl: "templates/message/messages.html",
+					controller: 'MessagesCtrl'
+				}
+			}
+		})
 		.state('app.message', {
 			url: "/message",
 			params: {
-				isAnimated: true
+				data: null
 			},
 			views: {
 				'menuContent': {
