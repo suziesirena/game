@@ -42,7 +42,7 @@ function initDatabase($ngData) {
 			abstract: String,
 			content: String,
 			config: Object,
-			conditions: Object
+			action: Object
 		},
 		methods: {
 			triggerDate: function() {
@@ -55,10 +55,12 @@ function initDatabase($ngData) {
 		tableName: 'action',
 		properties: {
 			type: String,
-			beginTime: Number,
-			EndTime: Number,
-			completed: String,
-			config: Array
+			pnjID: Number,
+			// beginTime: Number,
+			// EndTime: Number,
+			// config: Array,
+			completed: Boolean
+
 		}
 	});
 

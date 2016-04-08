@@ -9,9 +9,9 @@ function populateData($ngData) {
 			subject: 'Your phone is activated',
 			abstract: 'Wait for instructions',
 			content: 'Suzie will contact you soon.',
-			conditions: JSON.stringify([{
-				'read': 'true'
-			}])
+			action: JSON.stringify({
+				'type': 'read'
+			})
 		})
 		.then(function(event) {
 			console.log(event)
@@ -27,7 +27,12 @@ function populateData($ngData) {
 		config: JSON.stringify([
 			[2000, 'Appelez moi dès que tu es prêt'],
 			[4000, 'Appelle moi']
-		])
+		]),
+		nextEventID: 3,
+		action: JSON.stringify({
+			'type': 'call',
+			'pnjID': 2
+		})
 	}).catch(function(error) {
 		console.log('Event creation : ' + error.message);
 	});

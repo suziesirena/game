@@ -46,7 +46,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 		.state('app.call', {
 			url: "/call",
 			params: {
-				isAnimated: true
+				data: null
 			},
 			views: {
 				'menuContent': {

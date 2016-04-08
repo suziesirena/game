@@ -4,7 +4,7 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 
 	this.launch = function(event) {
 
-		if (event.nextEventID && !event.conditions) {
+		if (event.nextEventID && !event.action) {
 
 			Event.findById(event.nextEventID).then(function(event) {
 				service.launch(event);
@@ -77,6 +77,17 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 		}, event.scheduledTime, event);
 	}
 
+	this.addAction = function(event) {
+		var action = event.action;
+		action.completed = 'false';
+
+		switch (action.type) {
+			case 'call':
+				Action.create(event.action);
+				break;
+		}
+	}
+
 	this.sendMail = function(event) {
 
 		setTimeout(function(event) {
@@ -93,8 +104,13 @@ appServices.service('Eventservices', function($rootScope, $mdToast, $state, Even
 					answered: ''
 				}
 
-				if (event.conditions != '') {
-					newMail.nextEventID = event.nextEventID;
+				if (event.action) {
+					event.action = JSON.parse(event.action);
+					if (event.action.type == 'read') {
+						newMail.nextEventID = event.nextEventID;
+					} else {
+						service.addAction(event);
+					}
 				}
 
 				Mail.create(newMail)

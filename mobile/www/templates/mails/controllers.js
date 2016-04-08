@@ -1,16 +1,11 @@
 appControllers
 	.controller('mailsCtrl', function($rootScope, $scope, $state, $sce, Mail) {
 
-		$scope.allMails = function() {
-			Mail.find().then(function(mails) {
-				$scope.mails = mails;
-			})
-		}
-		$scope.allMails();
-
 		$scope.$on('$ionicView.enter', function() {
 			if (!$scope.mails) {
-				$scope.allMails();
+				Mail.find().then(function(mails) {
+					$scope.mails = mails;
+				})
 			}
 		});
 
