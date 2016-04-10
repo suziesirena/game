@@ -1,6 +1,12 @@
-<ion-view title="Test" ng-controller="homeCtrl" style="color:#fff; background-image:url('images/background.jpg');" ng-controller="testCtrl">
+<ion-view title="Test">
     <ion-content>
-
+        <div class="row">
+            <div class="col"><input type="text" ng-model="eventID"/></div>
+            <div class="col"><a href="" ng-click="launchEvent(eventID)" class="md-raised md-button md-default-theme material-background">Launch</a></div>
+        </div>
+        <div class="row">
+            <div class="col"><a href="" ui-sref="app.speechRecognition" class="md-raised md-button md-default-theme material-background">Dahsboard</a></div>
+        </div>
         <div class="row">
             <div class="col">
                 <a href="" ng-click="test1()" class="md-raised md-button md-default-theme material-background">test 1</a>

@@ -67,7 +67,6 @@
     <script src="js/notifications/initializePushNotification.js"></script>
     <script src="js/notifications/RequestsService.js"></script>
 
-    <script src="templates/test/services.js"></script>
 
     <script src="js/styles.js"></script>
 
@@ -117,10 +116,10 @@
 
     <!-- <script  src="js/database/database.js"></script> -->
     <script src="js/database/services.js"></script>
-
-    <script src="js/events.js"></script>
-
-    <script src="js/services.js"></script>
+    <script src="services/events.js"></script>
+    <script src="services/audio.js"></script>
+    <script src="services/services.js"></script>
+    <script src="services/speech.js"></script>
 
     <script src="js/shared/directives.js"></script>
     <script src="js/shared/filter.js"></script>
@@ -150,16 +149,16 @@
             height: 200px;
             text-align: center;
         }
-        
+
         .product.modal {
             background: transparent;
             height: 100%;
         }
-        
+
         .slider {
             height: 100%;
         }
-        
+
         .slider-slide {
             padding-top: 80px;
             color: #000;
@@ -168,11 +167,11 @@
             font-weight: 300;
         }
         /** FORCE THE MODAL */
-        
+
         .active .modal-backdrop-bg {
             opacity: 0.5;
         }
-        
+
         .modal-backdrop-bg {
             -webkit-transition: opacity 300ms ease-in-out;
             transition: opacity 300ms ease-in-out;

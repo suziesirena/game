@@ -1,36 +1,44 @@
 appControllers
-.controller('mailsCtrl', function ($rootScope, $scope, $state, $sce, Mail) {
+  .controller('mailsCtrl', function($rootScope, $scope, $state, $sce, Mail) {
 
-  $scope.allMails = function() {
-    Mail.find().then(function(mails){
-      $scope.mails = mails;
-    })
-  }
-  $scope.allMails();
-
-  $rootScope.$on('$stateChangeStart',function(){
-    if (!$scope.mails) {
-      $scope.allMails();
-    }
-  });
-
-  $scope.navigateTo = function (targetPage, objectData) {
-    $state.go(targetPage, {
-        mailDetail: objectData
+    $scope.$on('$ionicView.enter', function() {
+      Mail.find().then(function(mails) {
+        $scope.mails = mails;
+      })
     });
-  };
-})
-.controller('mailCtrl', function ($rootScope, $scope, $stateParams, $state, $sce) {
 
-  if ($stateParams.mailDetail) {
-    $scope.mailContent = $sce.trustAsHtml($stateParams.mailDetail.content);
-    $scope.mail = $stateParams.mailDetail;
-    $scope.mail.read = 'read';
-    $scope.mail.save();
-    $rootScope.appSettings.unreadMails --;
-    $rootScope.appSettings.save();
+    $scope.navigateTo = function(targetPage, objectData) {
+      $state.go(targetPage, {
+        data: objectData
+      });
+    };
+  })
+  .controller('mailCtrl', function($rootScope, $scope, $stateParams, $state, $sce, Eventservices, Event) {
 
-  } else {
-    $state.go('app.mails')
-  }
-})
+    // $scope.$on('$state.beforeEnter', function() {
+    var mail = $stateParams.data;
+    if (mail) {
+      $scope.mail = mail;
+      if (mail.read != 'read') {
+        $rootScope.appSettings.unreadMails--;
+        $rootScope.appSettings.save();
+
+        if (mail.nextEventID) {
+          Event.findOne({
+            id: mail.nextEventID
+          }).then(function(event) {
+            Eventservices.launch(event);
+          })
+        }
+
+        $scope.mail.read = 'read';
+        $scope.mail.save();
+      }
+
+      $scope.mailContent = $sce.trustAsHtml(mail.content);
+
+    } else {
+      $state.go('app.mails');
+    }
+    // });
+  })

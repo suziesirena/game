@@ -3,7 +3,7 @@
             <div class="list">
               <div ng-repeat="mail in mails">
                 <a class="item item-avatar" ng-click="navigateTo('app.mail', mail)">
-                  <img src="img/pnj/pnj{{mail.senderID}}.jpg">
+                  <img src="img/pnj/pnj{{mail.pnjID}}.jpg">
                   <h2>{{mail.senderName}}</h2>
                   <p style="font-weight: bold;">{{mail.subject}}</p>
                   <p style="white-space: initial;" class="{{mail.read}}" ng-bind-html="mail.abstract"></p>
